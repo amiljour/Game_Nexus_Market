@@ -264,3 +264,4 @@ jspm_packages/
 *.swo
 
 # Other
+/.metadata/
