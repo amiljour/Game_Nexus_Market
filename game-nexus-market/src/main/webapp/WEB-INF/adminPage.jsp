@@ -51,6 +51,8 @@
 							class="hover:underline me-4 md:me-6">Add Category</a></li>
 						<li><a href="/admin/add/item"
 							class="hover:underline me-4 md:me-6">Add Item</a></li>
+							<li><a href="/"
+							class="hover:underline me-4 md:me-6">Dashboard</a></li>
 						<li><a href="/clearsession"
 							class="hover:underline me-4 md:me-6">Logout</a></li>
 					</ul>
@@ -64,20 +66,26 @@
 
 	<div class="container my-5 mx-auto px-5 flex justify-around flex-wrap">
 
- <c:forEach var="category" items="${categories}">
- 
-		<div class="card w-96 h-40 my-3 bg-primary text-primary-content">
-			<div class="card-body">
-				<h2 class="text-center text-2xl font-semibold"><c:out value="${category.name}"></c:out></h2>
-				<div class="card-actions justify-center">
-					<a href="/admin/edit/category/${category.id}" class="btn btn-warning">Edit</a>
-					<a href="/admin/delete/category/${category.id}" class="btn btn-error">Delete</a>
+		<c:forEach var="category" items="${categories}">
+
+			<div class="card w-96 h-40 my-3 bg-primary text-primary-content">
+				<div class="card-body">
+					<h2 class="text-center text-2xl font-semibold">
+						<c:out value="${category.name}"></c:out>
+					</h2>
+					<div class="card-actions justify-center">
+						<a href="/admin/edit/category/${category.id}"
+							class="btn btn-outline btn-warning">Edit</a>
+						<form action="/admin/delete/category/${category.id}" method="post">
+							<input type="hidden" name="_method" value="DELETE">
+							<button type="submit" class="btn btn-outline btn-success">Delete</button>
+						</form>
+					</div>
 				</div>
 			</div>
-		</div>
 
-        </c:forEach>
-        
+		</c:forEach>
+
 	</div>
 
 
@@ -87,107 +95,30 @@
 
 	<div class="container my-5 mx-auto px-5 flex justify-around flex-wrap">
 
-		<div class="card w-96 bg-base-100 shadow-xl">
-			<figure>
-				<img src="/images/Xbox-logo.png" alt="XboxLogo"
-					class="h-full max-h-48" />
-			</figure>
-			<div class="card-body items-center text-center">
-				<h2 class="card-title">ItemName</h2>
-				<p>ItemStockRemaining</p>
-				<p>ItemCategory</p>
-				<p>ItemDescription</p>
-				<div class="mt-3 card-actions justify-center">
-					<a href="/admin/edit/item/id" class="btn btn-warning">Edit</a> <a
-						href="/admin/delete/item/id" class="btn btn-error">Delete</a>
-				</div>
-			</div>
-		</div>
 
-		<div class="card w-96 bg-base-100 shadow-xl">
-			<figure>
-				<img src="/images/Xbox-logo.png" alt="XboxLogo"
-					class="h-full max-h-48" />
-			</figure>
-			<div class="card-body items-center text-center">
-				<h2 class="card-title">ItemName</h2>
-				<p>ItemStockRemaining</p>
-				<p>ItemCategory</p>
-				<p>ItemDescription</p>
-				<div class="mt-3 card-actions justify-center">
-					<a href="/admin/edit/item/id" class="btn btn-warning">Edit</a> <a
-						href="/admin/delete/item/id" class="btn btn-error">Delete</a>
-				</div>
-			</div>
-		</div>
+		<c:forEach var="item" items="${items}">
 
-		<div class="card w-96 bg-base-100 shadow-xl">
-			<figure>
-				<img src="/images/Xbox-logo.png" alt="XboxLogo"
-					class="h-full max-h-48" />
-			</figure>
-			<div class="card-body items-center text-center">
-				<h2 class="card-title">ItemName</h2>
-				<p>ItemStockRemaining</p>
-				<p>ItemCategory</p>
-				<p>ItemDescription</p>
-				<div class="mt-3 card-actions justify-center">
-					<a href="/admin/edit/item/id" class="btn btn-warning">Edit</a> <a
-						href="/admin/delete/item/id" class="btn btn-error">Delete</a>
+			<div class="card w-96 bg-secondary text-secondary-content shadow-xl">
+				<figure>
+					<img src="${item.imageLink}" alt="${item.name}"
+					class="h-full max-h-48 m-2" />
+				</figure>
+				<div class="card-body items-center text-center">
+					<h2 class="card-title"><c:out value="${item.name}"></c:out></h2>
+					<p>Price: $<c:out value="${item.price}"></c:out></p>
+					<p>Inventory Remaining:<c:out value="${item.inventory}"></c:out></p>
+					<p>Description:<c:out value="${item.description}"></c:out></p>
+					<div class="mt-3 card-actions justify-center">
+						<a href="/admin/edit/item/${item.id}" class="btn btn-outline btn-warning">Edit</a> 
+						<form action="/admin/delete/item/${category.id}" method="post">
+							<input type="hidden" name="_method" value="DELETE">
+							<button type="submit" class="btn btn-outline btn-success">Delete</button>
+						</form>
+					</div>
 				</div>
 			</div>
-		</div>
-
-		<div class="card w-96 bg-base-100 shadow-xl">
-			<figure>
-				<img src="/images/Xbox-logo.png" alt="XboxLogo"
-					class="h-full max-h-48" />
-			</figure>
-			<div class="card-body items-center text-center">
-				<h2 class="card-title">ItemName</h2>
-				<p>ItemStockRemaining</p>
-				<p>ItemCategory</p>
-				<p>ItemDescription</p>
-				<div class="mt-3 card-actions justify-center">
-					<a href="/admin/edit/item/id" class="btn btn-warning">Edit</a> <a
-						href="/admin/delete/item/id" class="btn btn-error">Delete</a>
-				</div>
-			</div>
-		</div>
-
-		<div class="card w-96 bg-base-100 shadow-xl">
-			<figure>
-				<img src="/images/Xbox-logo.png" alt="XboxLogo"
-					class="h-full max-h-48" />
-			</figure>
-			<div class="card-body items-center text-center">
-				<h2 class="card-title">ItemName</h2>
-				<p>ItemStockRemaining</p>
-				<p>ItemCategory</p>
-				<p>ItemDescription</p>
-				<div class="mt-3 card-actions justify-center">
-					<a href="/admin/edit/item/id" class="btn btn-warning">Edit</a> <a
-						href="/admin/delete/item/id" class="btn btn-error">Delete</a>
-				</div>
-			</div>
-		</div>
-
-		<div class="card w-96 bg-base-100 shadow-xl">
-			<figure>
-				<img src="/images/Xbox-logo.png" alt="XboxLogo"
-					class="h-full max-h-48" />
-			</figure>
-			<div class="card-body items-center text-center">
-				<h2 class="card-title">ItemName</h2>
-				<p>ItemStockRemaining</p>
-				<p>ItemCategory</p>
-				<p>ItemDescription</p>
-				<div class="mt-3 card-actions justify-center">
-					<a href="/admin/edit/item/id" class="btn btn-warning">Edit</a> <a
-						href="/admin/delete/item/id" class="btn btn-error">Delete</a>
-				</div>
-			</div>
-		</div>
+			
+		</c:forEach>
 
 	</div>
 

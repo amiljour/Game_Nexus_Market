@@ -13,7 +13,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Add a Category</title>
+<title>Edit a Category</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link
 	href="https://cdn.jsdelivr.net/npm/daisyui@4.9.0/dist/full.min.css"
@@ -59,8 +59,22 @@
 		</nav>
 	</div>
 
+	<!-- Edit a Category Form -->
+  <div class="flex flex-col w-3/5 lg:w-600px mx-auto my-5">
+    <h2 class="text-center mb-5 text-3xl font-semibold dark:text-white">Add a Category</h2>
+    <form:form action="/admin/edit/category/${category.id}" method="POST" modelAttribute="category">
+      
+      <div class="mb-4">
+      	<input type="hidden" name="_method" value="put">
+        <form:label path="name" class="block text-sm font-medium mb-2">Category Name</form:label>
+        <form:input type="text" path="name" class="input input-bordered rounded-md block w-full bg-transparent" placeholder="Category Name..." />
+        <form:errors path="name" class="text-error text-center" />
+      </div>
 
-	
+      <button type="submit" class="btn btn-outline btn-primary">Submit</button>
+
+    </form:form>
+  </div>
 
 	<!-- Footer -->
 	<footer class="rounded-lg shadow m-4 dark:bg-gray-800">

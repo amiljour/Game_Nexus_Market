@@ -72,7 +72,7 @@
         <form:errors path="name" class="text-error text-center" />
       </div>
 
-      <button type="submit" class="btn btn-outline btn-primary">+ Add +</button>
+      <button type="submit" class="btn btn-outline btn-primary">Add</button>
 
     </form:form>
   </div>
