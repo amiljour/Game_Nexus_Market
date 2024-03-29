@@ -74,12 +74,10 @@
 								class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
 								<ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
 									aria-labelledby="dropdownLargeButton">
-									<li><a href="/categoryPage"
-										class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Category
-											1</a></li>
-									<li><a href="/categoryPage"
-										class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Category
-											2</a></li>
+									<c:forEach var="category" items="${categories}">
+ 										<li><a href="/category/${category.id}"
+										class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"><c:out value="${category.name}"></c:out></a></li>
+        							</c:forEach>
 								</ul>
 							</div>
 						</li>
@@ -216,7 +214,7 @@
 			</span>
 			<ul
 				class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
-				<li><a href="/adminView" class="hover:underline me-4 md:me-6">Admin
+				<li><a href="/admin" class="hover:underline me-4 md:me-6">Admin
 						Page</a></li>
 				<li><a href="/test" class="hover:underline me-4 md:me-6">Test
 						Page</a></li>

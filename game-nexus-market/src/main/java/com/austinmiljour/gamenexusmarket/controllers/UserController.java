@@ -47,6 +47,8 @@ public class UserController {
 			session.setAttribute("userId", registeredUser.getId());
 			// save the userName to session for future use
 			session.setAttribute("userName", registeredUser.getFirstName());
+			// save the userName to session for future use
+			session.setAttribute("admin", registeredUser.isAdmin());
 			return"redirect:/";
 		}
 	}
@@ -66,6 +68,8 @@ public class UserController {
 			session.setAttribute("userId", loggedUser.getId());
 			// save the userName to session for future use
 			session.setAttribute("firstName", loggedUser.getFirstName());
+			// save the userName to session for future use
+			session.setAttribute("admin", loggedUser.isAdmin());
 			return"redirect:/";
 		}
 	}

@@ -13,7 +13,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>TEST PAGE</title>
+<title>TESTPAGE</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link
 	href="https://cdn.jsdelivr.net/npm/daisyui@4.9.0/dist/full.min.css"
@@ -34,8 +34,7 @@
 				<a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
 					<img src="/images/GameController.png" class="h-8"
 					alt="Game Controller Logo" /> <span
-					class="self-center text-5xl font-semibold dark:text-white">Game
-						Nexus Market</span>
+					class="self-center text-5xl font-semibold dark:text-white">Admin View</span>
 				</a>
 				<div class="flex items-center space-x-6 rtl:space-x-reverse">
 					<a href="/loginandregister"
@@ -130,81 +129,10 @@
 				</div>
 			</div>
 		</nav>
-	</div>
+</div>
 
-	<!-- Hero Headline -->
-	<div class="hero  my-5 bg-base-200">
-		<div class="hero-content text-center">
-			<div class="max-w-md">
-				<h1 class="text-3xl font-bold">Embark on an Epic Quest for
-					Gaming Glory!</h1>
-				<p class="py-6">Dive into the ultimate collection of video
-					games, state-of-the-art consoles, and must-have accessories
-					designed to catapult your gaming experience into new dimensions.
-					Whether you're a seasoned warrior in the realms of virtual battles
-					or a newcomer ready to press start on your first adventure, Game
-					Nexus Market is your trusted ally, furnishing you with everything
-					you need for the next level of play. Get ready to game like never
-					before!</p>
-			</div>
-		</div>
-	</div>
 
-	<!-- 3 cards -->
-	<div class="container my-5 mx-auto px-5 flex justify-around flex-wrap">
-
-		<!-- Xbox Card -->
-		<div class="card w-96 bg-base-100 shadow-xl">
-			<figure>
-				<img
-					src="/images/Xbox-logo.png"
-					alt="Xbox Logo"
-					class="h-full max-h-48" />
-			</figure>
-			<div class="card-body">
-				<h2 class="card-title">Xbox Series X|S</h2>
-				<p>Unleash the ultimate gaming power with Xbox Series X|S. Dive into a universe of exclusive games and experience next-gen performance. Enhance your adventure with our range of accessories and join a community of gamers today!</p>
-				<div class="card-actions justify-end">
-					<button class="btn btn-primary">Go Now!</button>
-				</div>
-			</div>
-		</div>
-		
-		<!-- PS5 Card -->
-		<div class="card w-96 bg-base-100 shadow-xl">
-			<figure>
-				<img
-					src="images/PS5Logo.png"
-					alt="PlayStation 5 Logo"
-					class="h-full max-h-48" />
-			</figure>
-			<div class="card-body">
-				<h2 class="card-title">PlayStation 5</h2>
-				<p>Experience the future of play with PlayStation 5. Immerse yourself in astonishing graphics with exclusive titles that define the next gaming era. Elevate your gaming sessions with our selection of consoles, games, and accessories.</p>
-				<div class="card-actions justify-end">
-					<button class="btn btn-primary">Go Now!</button>
-				</div>
-			</div>
-		</div>
-
-		<!-- Switch Card -->
-		<div class="card w-96 bg-base-100 shadow-xl">
-			<figure>
-				<img
-					src="images/SwitchLogo.png"
-					alt="Nintendo Switch Logo"
-					class="h-full max-h-48" />
-			</figure>
-			<div class="card-body">
-				<h2 class="card-title">Nintendo Switch</h2>
-				<p>Switch up your gameplay with the Nintendo Switch. Discover the joys of portable gaming with a vast library of unique games. Get your hands on the latest consoles, thrilling games, and cool accessories to play anytime, anywhere!</p>
-				<div class="card-actions justify-end">
-					<button class="btn btn-primary">Go Now!</button>
-				</div>
-			</div>
-		</div>
-
-	</div>
+	
 
 	<!-- Footer -->
 	<footer class="rounded-lg shadow m-4 dark:bg-gray-800">

@@ -48,10 +48,6 @@ public class User {
     @NotEmpty(message="Confirm Password is required!")
     @Size(min=8, max=128, message="Confirm Password must be at least 8 characters long.")
     private String confirm;
-	
-	// this is to link the tables
-//	@OneToMany(mappedBy="user")
-//	private List<Book> books;
 
 	// This will not be updated after it is created
 	@Column(updatable = false)
