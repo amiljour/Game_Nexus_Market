@@ -98,7 +98,7 @@
 
 		<c:forEach var="item" items="${items}">
 
-			<div class="card w-96 bg-secondary text-secondary-content shadow-xl">
+			<div class="card w-96 my-3 bg-secondary text-secondary-content shadow-xl">
 				<figure>
 					<img src="${item.imageLink}" alt="${item.name}"
 					class="h-full max-h-48 m-2" />

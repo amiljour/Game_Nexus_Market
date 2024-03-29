@@ -140,13 +140,13 @@
 
 		<c:forEach var="item" items="${items}">
 
-			<div class="card w-96 glass shadow-xl">
+			<div class="card w-96 my-3 glass shadow-xl">
 				<figure>
 					<img src="${item.imageLink}" alt="${item.name}"
 					class="h-full max-h-48 m-2" />
 				</figure>
 				<div class="card-body items-center text-center">
-					<a href="" class="card-title"><c:out value="${item.name}"></c:out></a>
+					<a href="/item/${item.id}" class="card-title"><c:out value="${item.name}"></c:out></a>
 					<p>Price: $<c:out value="${item.price}"></c:out></p>
 					<p>Console: <c:out value="${item.category.name}"></c:out></p>
 					<p>Items in Stock: <c:out value="${item.inventory}"></c:out></p>
