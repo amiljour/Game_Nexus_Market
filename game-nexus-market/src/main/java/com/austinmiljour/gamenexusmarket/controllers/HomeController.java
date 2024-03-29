@@ -29,5 +29,12 @@ public class HomeController {
 		model.addAttribute("categories", categoryService.allCategories());
 		return "dashboard.jsp";
 	}
+	
+	@GetMapping("/allItems")
+	public String showAllItems(Model model) {
+		model.addAttribute("categories", categoryService.allCategories());
+		model.addAttribute("items", itemService.allItemes());
+		return "allItemsPage.jsp";
+	}
 
 }

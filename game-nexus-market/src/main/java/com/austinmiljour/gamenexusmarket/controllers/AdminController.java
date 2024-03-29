@@ -148,7 +148,7 @@ public class AdminController {
 			return "adminAddItem.jsp";
 		} else {
 			itemService.createItem(newItem);
-			return "redirect:/admin";
+			return "redirect:/admin/add/item";
 		}
 	}
 

@@ -142,7 +142,7 @@
     <h2 class="text-center mb-5 text-3xl font-semibold dark:text-white">Register</h2>
     <form:form action="/register" method="POST" modelAttribute="newUser">
       
-      <form:input type="hidden" path="admin" value="false" />
+      <form:input type="hidden" path="admin" value="flase" />
 
       <div class="mb-4">
         <form:label path="firstName" class="block text-sm font-medium mb-2">First Name</form:label>

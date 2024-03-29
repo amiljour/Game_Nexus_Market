@@ -70,7 +70,7 @@
 				<form:label path="name" class="block text-sm font-medium mb-2">Item Name</form:label>
 				<form:input type="text" path="name"
 					class="input input-bordered rounded-md block w-full bg-transparent"
-					placeholder="Category Name..." />
+					placeholder="Item Name..." />
 				<form:errors path="name" class="text-error text-center" />
 			</div>
 

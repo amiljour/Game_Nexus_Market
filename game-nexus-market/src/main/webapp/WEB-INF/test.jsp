@@ -34,7 +34,7 @@
 				<a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
 					<img src="/images/GameController.png" class="h-8"
 					alt="Game Controller Logo" /> <span
-					class="self-center text-5xl font-semibold dark:text-white">Admin View</span>
+					class="self-center text-5xl font-semibold dark:text-white">Game Nexus Market</span>
 				</a>
 				<div class="flex items-center space-x-6 rtl:space-x-reverse">
 					<a href="/loginandregister"
@@ -144,7 +144,7 @@
 			</span>
 			<ul
 				class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
-				<li><a href="/adminView" class="hover:underline me-4 md:me-6">Admin
+				<li><a href="/admin" class="hover:underline me-4 md:me-6">Admin
 						Page</a></li>
 				<li><a href="/test" class="hover:underline me-4 md:me-6">Test
 						Page</a></li>
