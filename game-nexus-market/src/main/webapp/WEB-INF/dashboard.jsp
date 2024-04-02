@@ -154,7 +154,7 @@
 	<div class="container my-5 mx-auto px-5 flex justify-around flex-wrap">
 
 		<!-- Xbox Card -->
-		<div class="card w-96 bg-base-100 shadow-xl">
+		<div class="card w-96 bg-base-100 shadow-xl glass p-1">
 			<figure>
 				<img
 					src="/images/Xbox-logo.png"
@@ -164,11 +164,12 @@
 			<div class="card-body">
 				<h2 class="card-title">Xbox Series X|S</h2>
 				<p>Unleash the ultimate gaming power with Xbox Series X|S. Dive into a universe of exclusive games and experience next-gen performance. Enhance your adventure with our range of accessories and join a community of gamers today!</p>
+			<a href="/category/1" class="btn btn-success">Go Now!</a>
 			</div>
 		</div>
 		
-		<!-- PS5 Card -->
-		<div class="card w-96 bg-base-100 shadow-xl">
+		<!-- PS5 Card --> 
+		<div class="card w-96 bg-base-100 shadow-xl glass p-1">
 			<figure>
 				<img
 					src="/images/PS5Logo.png"
@@ -178,11 +179,12 @@
 			<div class="card-body">
 				<h2 class="card-title">PlayStation 5</h2>
 				<p>Experience the future of play with PlayStation 5. Immerse yourself in astonishing graphics with exclusive titles that define the next gaming era. Elevate your gaming sessions with our selection of consoles, games, and accessories.</p>
+			<a href="/category/2" class="btn btn-success">Go Now!</a>
 			</div>
 		</div>
 
 		<!-- Switch Card -->
-		<div class="card w-96 bg-base-100 shadow-xl">
+		<div class="card w-96 bg-base-100 shadow-xl glass p-1">
 			<figure>
 				<img
 					src="images/SwitchLogo.png"
@@ -192,6 +194,7 @@
 			<div class="card-body">
 				<h2 class="card-title">Nintendo Switch</h2>
 				<p>Switch up your gameplay with the Nintendo Switch. Discover the joys of portable gaming with a vast library of unique games. Get your hands on the latest consoles, thrilling games, and cool accessories to play anytime, anywhere!</p>
+				<a href="/category/3" class="btn btn-success">Go Now!</a>
 			</div>
 		</div>
 
