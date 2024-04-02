@@ -64,4 +64,12 @@ public class HomeController {
 		model.addAttribute("items", itemService.allItemes());
 		return "itemsAvailablePage.jsp";
 	}
+	
+	// All Items Not Available Page
+	@GetMapping("/itemsNotAvaiable")
+	public String showAllItemsNotAvailable(Model model) {
+		model.addAttribute("categories", categoryService.allCategories());
+		model.addAttribute("items", itemService.allItemes());
+		return "itemsNotAvailablePage.jsp";
+	}
 }
