@@ -31,6 +31,14 @@ public class HomeController {
 		return "dashboard.jsp";
 	}
 	
+	// Item Details Page
+	@GetMapping("/item/{id}")
+	public String showOneItem(@PathVariable("id") Long id, HttpSession session, Model model) {
+		Item oneItem = itemService.oneItem(id);
+		model.addAttribute("item", oneItem);
+		return "itemDetails.jsp";
+	}
+	
 	// Category Page
 	@GetMapping("/category/{id}")
 	public String categoryPage(@PathVariable("id") Long id, Model model) {
@@ -41,6 +49,7 @@ public class HomeController {
 		return "categoiresPage.jsp";
 	}
 	
+	// All Items Page
 	@GetMapping("/allItems")
 	public String showAllItems(Model model) {
 		model.addAttribute("categories", categoryService.allCategories());
@@ -48,11 +57,11 @@ public class HomeController {
 		return "allItemsPage.jsp";
 	}
 	
-	@GetMapping("/item/{id}")
-	public String showOneItem(@PathVariable("id") Long id, HttpSession session, Model model) {
-		Item oneItem = itemService.oneItem(id);
-	    model.addAttribute("item", oneItem);
-		return "itemDetails.jsp";
+	// All Items Available Page
+	@GetMapping("/itemsAvailable")
+	public String showAllItemsAvailable(Model model) {
+		model.addAttribute("categories", categoryService.allCategories());
+		model.addAttribute("items", itemService.allItemes());
+		return "itemsAvailablePage.jsp";
 	}
-
 }

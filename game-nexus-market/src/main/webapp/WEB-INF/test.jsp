@@ -13,7 +13,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Template</title>
+<title>Test</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link
 	href="https://cdn.jsdelivr.net/npm/daisyui@4.9.0/dist/full.min.css"
@@ -129,10 +129,12 @@
 				</div>
 			</div>
 		</nav>
-</div>
+	</div>
 
-
-	
+	<!-- Body -->
+	<div>
+		
+	</div>
 
 	<!-- Footer -->
 	<footer class="rounded-lg shadow m-4 dark:bg-gray-800">
