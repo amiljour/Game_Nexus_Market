@@ -69,20 +69,19 @@
     <path stroke="currentColor" stroke-linecap="round"
 										stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
   </svg>
-							</button> <!-- Dropdown Options -->
+							</button> 
+							<!-- Dropdown Options -->
 							<div id="dropdownNavbar"
 								class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
 								<ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
 									aria-labelledby="dropdownLargeButton">
-									<li><a href="/categoryPage"
-										class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Category
-											1</a></li>
-									<li><a href="/categoryPage"
-										class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Category
-											2</a></li>
+									<c:forEach var="category" items="${categories}">
+ 										<li><a href="/category/${category.id}"
+										class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"><c:out value="${category.name}"></c:out></a></li>
+        							</c:forEach>
 								</ul>
 							</div>
-						</li>
+							
 						<li><a href="/allItems"
 							class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500 ">All
 								Items</a></li>
