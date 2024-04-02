@@ -13,7 +13,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Template</title>
+<title>${category.name } Items</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link
 	href="https://cdn.jsdelivr.net/npm/daisyui@4.9.0/dist/full.min.css"
@@ -53,13 +53,13 @@
 					<ul
 						class="flex flex-row flex-wrap font-medium mt-0 space-x-8 rtl:space-x-reverse text-sm items-center">
 						<li><a href="/"
-							class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500"
+							class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
 							aria-current="page">Dashboard</a></li>
 						<!-- Category Dropdown Menu -->
 						<li>
 							<button id="dropdownNavbarLink"
 								data-dropdown-toggle="dropdownNavbar"
-								class="flex items-center justify-between  w-full py-2 px-3 text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:hover:bg-gray-700 md:dark:hover:bg-transparent">
+								class="flex items-center justify-between  block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500">
 								Categories
 								<svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true"
 									xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -129,10 +129,43 @@
 				</div>
 			</div>
 		</nav>
-</div>
+	</div>
 
-
+	<!-- Body -->
+	<div>
 	
+		<h1 class="text-center mb-5 text-4xl font-semibold dark:text-white my-3"><c:out value="${category.name }"></c:out> Category Page</h1>
+		
+		<div class="container my-5 mx-auto px-5 flex justify-around flex-wrap">
+		
+			<c:forEach var="item" items="${items}">
+
+			<c:if test="${item.category.id == category.id}">
+			
+				<div class="card w-96 my-3 glass shadow-xl">
+					<figure>
+						<img src="${item.imageLink}" alt="${item.name}"
+						class="h-full max-h-48 m-2" />
+					</figure>
+					<div class="card-body items-center text-center">
+						<a href="/item/${item.id}" class="card-title"><c:out value="${item.name}"></c:out></a>
+						<p>Price: $<c:out value="${item.price}"></c:out></p>
+						<p>Console: <c:out value="${item.category.name}"></c:out></p>
+						<p>Items in Stock: <c:out value="${item.inventory}"></c:out></p>
+						<p>Description: <c:out value="${item.description}"></c:out></p>
+						<div class="mt-3 card-actions justify-center">
+							<a href="" class="btn btn-success">Add to Cart</a> 
+						</div>
+					</div>
+				</div>
+				
+    		</c:if>
+			
+			</c:forEach>
+			
+		</div>
+		
+	</div>
 
 	<!-- Footer -->
 	<footer class="rounded-lg shadow m-4 dark:bg-gray-800">

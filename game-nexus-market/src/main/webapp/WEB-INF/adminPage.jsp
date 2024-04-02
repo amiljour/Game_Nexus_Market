@@ -34,8 +34,7 @@
 				<a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
 					<img src="/images/GameController.png" class="h-8"
 					alt="Game Controller Logo" /> <span
-					class="self-center text-5xl font-semibold dark:text-white">Admin
-						View</span>
+					class="self-center text-5xl font-semibold dark:text-white">Admin View</span>
 				</a>
 
 			</div>
@@ -45,8 +44,7 @@
 				<div class="flex items-center ">
 					<ul
 						class="flex flex-row flex-wrap font-medium mt-0 space-x-8 rtl:space-x-reverse text-sm items-center">
-						<li><a href="/admin" class="hover:underline me-4 md:me-6">Admin
-								Page</a></li>
+						<li><a href="/admin" class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500">Admin Page</a></li>
 						<li><a href="/admin/add/category"
 							class="hover:underline me-4 md:me-6">Add Category</a></li>
 						<li><a href="/admin/add/item"

@@ -37,6 +37,14 @@ public class AdminController {
 		return adminFlag instanceof Boolean && (Boolean) adminFlag;
 	}
 
+	// Testing Page
+	@GetMapping("/test")
+	public String test(Model model) {
+		model.addAttribute("categories", categoryService.allCategories());
+		model.addAttribute("items", itemService.allItemes());
+		return "test.jsp";
+	}
+
 	@GetMapping("/admin")
 	public String adminHome(Model model, HttpSession session) {
 		// Route Protection
