@@ -72,4 +72,12 @@ public class HomeController {
 		model.addAttribute("items", itemService.allItemes());
 		return "itemsNotAvailablePage.jsp";
 	}
+	
+	// All Items on Sale
+	@GetMapping("/itemsOnSale")
+	public String itemsOnSale(Model model) {
+		model.addAttribute("categories", categoryService.allCategories());
+		model.addAttribute("items", itemService.allItemes());
+		return "itemsOnSale.jsp";
+	}
 }

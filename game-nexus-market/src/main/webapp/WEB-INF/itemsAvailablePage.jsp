@@ -140,26 +140,41 @@
 		
 			<c:forEach var="item" items="${items}">
 
-			<c:if test="${item.inventory > 0}">
-			
-				<div class="card w-96 my-3 glass shadow-xl">
-					<figure>
-						<img src="${item.imageLink}" alt="${item.name}"
-						class="h-full max-h-48 m-2" />
-					</figure>
-					<div class="card-body items-center text-center">
-						<a href="/item/${item.id}" class="card-title"><c:out value="${item.name}"></c:out></a>
-						<p>Price: $<c:out value="${item.price}"></c:out></p>
-						<p>Console: <c:out value="${item.category.name}"></c:out></p>
-						<p>Items in Stock: <c:out value="${item.inventory}"></c:out></p>
-						<p>Description: <c:out value="${item.description}"></c:out></p>
-						<div class="mt-3 card-actions justify-center">
-							<a href="" class="btn btn-success">Add to Cart</a> 
+				<c:if test="${item.inventory > 0}">
+				
+					<div class="card w-96 my-3 glass shadow-xl">
+						<figure>
+							<img src="${item.imageLink}" alt="${item.name}"
+							class="h-full max-h-48 m-2" />
+						</figure>
+						<div class="card-body items-center text-center">
+							<a href="/item/${item.id}" class="card-title"><c:out value="${item.name}"></c:out></a>
+							<c:choose>
+							    <c:when test="${item.discount > 0}">
+							    	<p class="text-error line-through">Original Price: $<c:out value="${item.price}"/></p>
+							      	<p class="text-success">Discounted Price: $<c:out value="${item.getDiscountedPrice()}"/></p>
+							    </c:when>
+							    <c:otherwise>
+							    	<p>Price: $<c:out value="${item.price}"/></p>
+								</c:otherwise>
+							</c:choose>
+							<p>Console: <c:out value="${item.category.name}"></c:out></p>
+							<c:choose>
+								<c:when test="${item.inventory == 0}">
+									<p class="text-error">Items in Stock: <c:out value="${item.inventory}"></c:out></p>
+								</c:when>
+								<c:otherwise>
+									<p class="text-secondary">Items in Stock: <c:out value="${item.inventory}"></c:out></p>
+								</c:otherwise>
+							</c:choose>
+							<p>Description: <c:out value="${item.description}"></c:out></p>
+							<div class="mt-3 card-actions justify-center">
+								<a href="" class="btn btn-success">Add to Cart</a> 
+							</div>
 						</div>
 					</div>
-				</div>
-				
-    		</c:if>
+					
+	    		</c:if>
 			
 			</c:forEach>
 			

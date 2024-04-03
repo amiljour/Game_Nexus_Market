@@ -110,6 +110,14 @@
 					placeholder="Inventory..." />
 				<form:errors path="inventory" class="text-error text-center" />
 			</div>
+			
+			<div class="mb-4">
+				<form:label path="discount" class="block text-sm font-medium mb-2">Discount</form:label>
+				<form:input type="number" path="discount"
+					class="input input-bordered rounded-md block w-full bg-transparent"
+					placeholder="Discount %..." step="0.01" />
+				<form:errors path="discount" class="text-error text-center" />
+			</div>
 
 			<div class="mb-4">
 				<form:label path="description"

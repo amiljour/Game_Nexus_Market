@@ -136,12 +136,27 @@
 		<div class="hero-content flex-col lg:flex-row">
 			<img
 				src="${item.imageLink}"  alt="${item.name}"
-				class="max-w-sm rounded-lg shadow-2xl" />
+				class="max-w-sm rounded-lg shadow-2xl mr-3" />
 			<div>
 				<h1 class="text-5xl font-bold"><c:out value="${item.name}"></c:out></h1>
-				<p class="py-6">Price: $<c:out value="${item.price}"></c:out></p>
+				<c:choose>
+					<c:when test="${item.discount > 0}">
+						<p class="text-error line-through my-3">Original Price: $<c:out value="${item.price}"/></p>
+					    <p class="text-success">Discounted Price: $<c:out value="${item.getDiscountedPrice()}"/></p>
+					</c:when>
+					<c:otherwise>
+						<p class=" mt-3">Price: $<c:out value="${item.price}"/></p>
+					</c:otherwise>
+				</c:choose>
 				<p class="py-6">Console: <c:out value="${item.category.name}"></c:out></p>
-				<p class="py-6">Items in Stock: <c:out value="${item.inventory}"></c:out></p>
+				<c:choose>
+					<c:when test="${item.inventory == 0}">
+						<p class="text-error">Items in Stock: <c:out value="${item.inventory}"></c:out></p>
+					</c:when>
+					<c:otherwise>
+						<p class="text-secondary">Items in Stock: <c:out value="${item.inventory}"></c:out></p>
+					</c:otherwise>
+				</c:choose>
 				<p class="py-6">Description: <c:out value="${item.description}"></c:out></p>
 				<button class="btn btn-success">Add to Cart</button>
 			</div>
