@@ -36,15 +36,12 @@
 					alt="Game Controller Logo" /> <span
 					class="self-center text-5xl font-semibold dark:text-white">Game Nexus Market</span>
 				</a>
-				<div class="flex items-center space-x-6 rtl:space-x-reverse">
-					<a href="/loginandregister"
-						class="text-sm  text-blue-600 dark:text-blue-500 hover:underline">Login
-						or Register</a>
-				</div>
 
-				<a href="/shoppingCart"> <img src="/images/ShoppingCart2.png"
-					alt="Shopping Cart" class="h-8" />
-				</a>
+				<div class="flex g-2 items-center">
+					<p class="mx-2">${cartSize}</p>
+					<a href="/shoppingCart"> <img src="/images/ShoppingCart2.png"
+					alt="Shopping Cart" class="h-8" /></a>
+				</div>
 
 			</div>
 		</nav>
@@ -131,7 +128,7 @@
 		</nav>
 </div>
 
-<!-- Items -->
+	<!-- Items -->
 	<h1 class="text-center text-5xl font-semibold dark:text-white my-5">All Items</h1>
 
 	<div class="container my-5 mx-auto px-5 flex justify-around flex-wrap">
@@ -141,8 +138,8 @@
 
 			<div class="card w-96 my-3 glass shadow-xl">
 				<figure>
-					<img src="${item.imageLink}" alt="${item.name}"
-					class="h-full max-h-48 m-2" />
+					<a href="/item/${item.id}" class="card-title"><img src="${item.imageLink}" alt="${item.name}"
+					class="h-full max-h-48 m-2" /></a>
 				</figure>
 				<div class="card-body items-center text-center">
 					<a href="/item/${item.id}" class="card-title"><c:out value="${item.name}"></c:out></a>
@@ -166,7 +163,12 @@
 					</c:choose>
 					<p>Description: <c:out value="${item.description}"></c:out></p>
 					<div class="mt-3 card-actions justify-center">
-						<a href="" class="btn btn-success">Add to Cart</a> 
+						<c:if test="${item.inventory != 0}">
+							<a href="/item/add/${item.id}" class="btn btn-success">Add to Cart</a>     						
+						</c:if>
+						<c:if test="${item.inventory == 0}">
+						    <a href="" class="btn btn-success btn-disabled">Stock Coming Soon!</a> 
+						</c:if>
 					</div>
 				</div>
 			</div>
@@ -180,23 +182,24 @@
 	<footer class="rounded-lg shadow m-4 dark:bg-gray-800">
 		<div
 			class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
-			<span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">©
-				2024 <a href="/" class="hover:underline">Game Nexus Market™</a>. All
-				Rights Reserved.
+			<span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">©2024 
+				<a href="/" class="hover:underline">Game Nexus Market™</a>
+				. AllRights Reserved.
 			</span>
 			<ul
 				class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
-				<li><a href="/admin" class="hover:underline me-4 md:me-6">Admin
-						Page</a></li>
-				<li><a href="/test" class="hover:underline me-4 md:me-6">Test
-						Page</a></li>
-				<li><a href="/clearsession" class="hover:underline me-4 md:me-6">Clear Session</a>
-				</li>
-				<li><a href="/" class="hover:underline me-4 md:me-6">Privacy
-						Policy</a></li>
-				<li><a href="/" class="hover:underline me-4 md:me-6">Licensing</a>
-				</li>
-				<li><a href="/" class="hover:underline">Contact</a></li>
+				<c:if test="${userId == null}">
+					<li><a href="/loginandregister" class="hover:underline me-4 md:me-6">Admin Login / Registration</a></li>
+					<li><a href="/" class="hover:underline me-4 md:me-6">Privacy Policy</a></li>
+					<li><a href="/" class="hover:underline me-4 md:me-6">Terms & Conditions</a></li>
+					<li><a href="/" class="hover:underline me-4 md:me-6">Cookie Policy</a></li>
+					<li><a href="/" class="hover:underline me-4 md:me-6">Contact</a></li>
+				</c:if>
+				<c:if test="${userId != null}">
+					<li><a href="/admin" class="hover:underline me-4 md:me-6">Admin Page</a></li>
+					<li><a href="/test" class="hover:underline me-4 md:me-6">Test Page</a></li>
+					<li><a href="/clearsession" class="hover:underline me-4 md:me-6">Logout Admin</a></li>
+				</c:if> 
 			</ul>
 		</div>
 	</footer>

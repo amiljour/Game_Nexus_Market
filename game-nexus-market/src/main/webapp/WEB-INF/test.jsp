@@ -34,11 +34,13 @@
 				<a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
 					<img src="/images/GameController.png" class="h-8"
 					alt="Game Controller Logo" /> <span
-					class="self-center text-5xl font-semibold dark:text-white">Game Nexus Market</span>
+					class="self-center text-5xl font-semibold dark:text-white">Game
+						Nexus Market</span>
 				</a>
 				<div class="flex items-center space-x-6 rtl:space-x-reverse">
 					<a href="/loginandregister"
-						class="text-sm  text-blue-600 dark:text-blue-500 hover:underline">Login or Register</a>
+						class="text-sm  text-blue-600 dark:text-blue-500 hover:underline">Login
+						or Register</a>
 				</div>
 
 				<a href="/shoppingCart"> <img src="/images/ShoppingCart2.png"
@@ -81,19 +83,18 @@
 								</ul>
 							</div>
 							
-						</li>
 						<li><a href="/allItems"
-							class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-							>All Items</a></li>
+							class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">All
+								Items</a></li>
 						<li><a href="/itemsAvailable"
-							class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-							>Items Available</a></li>
+							class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Items
+								Available</a></li>
 						<li><a href="/itemsNotAvaiable"
-							class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-							>Items Not Available</a></li>
+							class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Items
+								Not Available</a></li>
 						<li><a href="/itemsOnSale"
-							class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-							>Items on Sale</a></li>
+							class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Items
+								on Sale</a></li>
 						<li><button type="button"
 								data-collapse-toggle="navbar-search"
 								aria-controls="navbar-search" aria-expanded="false"
@@ -140,17 +141,24 @@
 	<footer class="rounded-lg shadow m-4 dark:bg-gray-800">
 		<div
 			class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
-			<span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">©
-				2024 <a href="/" class="hover:underline">Game Nexus Market™</a>. All
-				Rights Reserved.
+			<span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">©2024 
+				<a href="/" class="hover:underline">Game Nexus Market™</a>
+				. AllRights Reserved.
 			</span>
 			<ul
 				class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
-				<li><a href="/" class="hover:underline me-4 md:me-6">Privacy Policy</a></li>
-				<li><a href="/" class="hover:underline me-4 md:me-6">Terms & Conditions</a></li>
-				<li><a href="/" class="hover:underline me-4 md:me-6">Cookie Policy</a></li>
-				<li><a href="/" class="hover:underline me-4 md:me-6">Contact</a></li>
-				<li><a href="/admin" class="hover:underline">Admin View</a></li>
+				<c:if test="${userId == null}">
+					<li><a href="/loginandregister" class="hover:underline me-4 md:me-6">Admin Login / Registration</a></li>
+					<li><a href="/" class="hover:underline me-4 md:me-6">Privacy Policy</a></li>
+					<li><a href="/" class="hover:underline me-4 md:me-6">Terms & Conditions</a></li>
+					<li><a href="/" class="hover:underline me-4 md:me-6">Cookie Policy</a></li>
+					<li><a href="/" class="hover:underline me-4 md:me-6">Contact</a></li>
+				</c:if>
+				<c:if test="${userId != null}">
+					<li><a href="/admin" class="hover:underline me-4 md:me-6">Admin Page</a></li>
+					<li><a href="/test" class="hover:underline me-4 md:me-6">Test Page</a></li>
+					<li><a href="/clearsession" class="hover:underline me-4 md:me-6">Logout Admin</a></li>
+				</c:if> 
 			</ul>
 		</div>
 	</footer>

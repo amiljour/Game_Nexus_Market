@@ -124,7 +124,7 @@
 						<a href="/admin/edit/item/${item.id}" class="btn btn-outline btn-warning">Edit</a> 
 						<form action="/admin/delete/item/${category.id}" method="post">
 							<input type="hidden" name="_method" value="DELETE">
-							<button type="submit" class="btn btn-outline btn-success">Delete</button>
+							<button type="submit" class="btn btn-outline btn-primary">Delete</button>
 						</form>
 					</div>
 

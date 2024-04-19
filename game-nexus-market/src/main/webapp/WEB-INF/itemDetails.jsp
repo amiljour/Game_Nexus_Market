@@ -43,7 +43,8 @@
 						or Register</a>
 				</div>
 
-				<a href="/shoppingCart"> <img src="/images/ShoppingCart2.png"
+				<p class="mx-2">${cartSize}</p>
+					<a href="/shoppingCart"> <img src="/images/ShoppingCart2.png"
 					alt="Shopping Cart" class="h-8" />
 				</a>
 
@@ -158,7 +159,14 @@
 					</c:otherwise>
 				</c:choose>
 				<p class="py-6">Description: <c:out value="${item.description}"></c:out></p>
-				<button class="btn btn-success">Add to Cart</button>
+				<div class="mt-3 card-actions justify-center">
+					<c:if test="${item.inventory != 0}">
+						<a href="/item/add/${item.id}" class="btn btn-success">Add to Cart</a>     						
+					</c:if>
+					<c:if test="${item.inventory == 0}">
+						   <a href="" class="btn btn-success btn-disabled">Stock Coming Soon!</a> 
+					</c:if>
+				</div>
 			</div>
 		</div>
 	</div>
