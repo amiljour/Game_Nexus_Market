@@ -6,11 +6,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import com.austinmiljour.gamenexusmarket.models.Category;
-import com.austinmiljour.gamenexusmarket.models.Item;
+import com.austinmiljour.gamenexusmarket.services.CartService;
 import com.austinmiljour.gamenexusmarket.services.CategoryService;
 import com.austinmiljour.gamenexusmarket.services.ItemService;
-
-import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class HomeController {
@@ -18,25 +16,20 @@ public class HomeController {
 	// import the 2 services
 	private final ItemService itemService;
 	private final CategoryService categoryService;
+	private final CartService cartService;
 
-	public HomeController(ItemService itemService, CategoryService categoryService) {
+	public HomeController(ItemService itemService, CategoryService categoryService, CartService cartService) {
 			this.itemService = itemService;
 			this.categoryService = categoryService;
+			this.cartService = cartService;
 		}
 
-	// Dashboard Page
+	// Home Page
 	@GetMapping("/")
 	public String dashboard(Model model) {
 		model.addAttribute("categories", categoryService.allCategories());
+		model.addAttribute("cartSize", cartService.getItemCount());
 		return "dashboard.jsp";
-	}
-	
-	// Item Details Page
-	@GetMapping("/item/{id}")
-	public String showOneItem(@PathVariable("id") Long id, HttpSession session, Model model) {
-		Item oneItem = itemService.oneItem(id);
-		model.addAttribute("item", oneItem);
-		return "itemDetails.jsp";
 	}
 	
 	// Category Page
@@ -46,38 +39,8 @@ public class HomeController {
 		model.addAttribute("category", oneCategory);
 		model.addAttribute("categories", categoryService.allCategories());
 		model.addAttribute("items", itemService.allItemes());
+		model.addAttribute("cartSize", cartService.getItemCount());
 		return "categoiresPage.jsp";
 	}
 	
-	// All Items Page
-	@GetMapping("/allItems")
-	public String showAllItems(Model model) {
-		model.addAttribute("categories", categoryService.allCategories());
-		model.addAttribute("items", itemService.allItemes());
-		return "allItemsPage.jsp";
-	}
-	
-	// All Items Available Page
-	@GetMapping("/itemsAvailable")
-	public String showAllItemsAvailable(Model model) {
-		model.addAttribute("categories", categoryService.allCategories());
-		model.addAttribute("items", itemService.allItemes());
-		return "itemsAvailablePage.jsp";
-	}
-	
-	// All Items Not Available Page
-	@GetMapping("/itemsNotAvaiable")
-	public String showAllItemsNotAvailable(Model model) {
-		model.addAttribute("categories", categoryService.allCategories());
-		model.addAttribute("items", itemService.allItemes());
-		return "itemsNotAvailablePage.jsp";
-	}
-	
-	// All Items on Sale
-	@GetMapping("/itemsOnSale")
-	public String itemsOnSale(Model model) {
-		model.addAttribute("categories", categoryService.allCategories());
-		model.addAttribute("items", itemService.allItemes());
-		return "itemsOnSale.jsp";
-	}
 }
