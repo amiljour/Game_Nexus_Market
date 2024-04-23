@@ -1,10 +1,14 @@
 package com.austinmiljour.gamenexusmarket.controllers;
 
+import java.util.Collections;
+import java.util.Map;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import com.austinmiljour.gamenexusmarket.models.CartItem;
 import com.austinmiljour.gamenexusmarket.models.Category;
 import com.austinmiljour.gamenexusmarket.services.CartService;
 import com.austinmiljour.gamenexusmarket.services.CategoryService;
@@ -41,6 +45,22 @@ public class HomeController {
 		model.addAttribute("items", itemService.allItemes());
 		model.addAttribute("cartSize", cartService.getItemCount());
 		return "categoiresPage.jsp";
+	}
+	
+	// Cart Page
+	@GetMapping("/shoppingCart")
+	public String cartPage(Model model) {
+		model.addAttribute("categories", categoryService.allCategories());
+		model.addAttribute("cartSize", cartService.getItemCount());
+	    Map<Long, CartItem> items = cartService.getItems();
+	    if (items == null || items.isEmpty()) {
+	        model.addAttribute("cartItems", Collections.emptyMap());
+	    } else {
+	        model.addAttribute("cartItems", items.values());
+	    }
+	    model.addAttribute("total", cartService.getTotal());
+	    model.addAttribute("items", itemService.allItemes());
+	    return "cartPage.jsp";
 	}
 	
 }

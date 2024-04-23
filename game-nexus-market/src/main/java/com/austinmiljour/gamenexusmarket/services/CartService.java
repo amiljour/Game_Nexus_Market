@@ -43,6 +43,15 @@ public class CartService {
 		items.clear();
 	}
 	
+	// Cart Total Price
+	public double getTotal() {
+		double total = 0.0;
+	    for (CartItem cartItem : items.values()) {
+	        total += cartItem.getTotalPrice();
+	    }
+	    return total;
+	}
+	
 	public Map<Long, CartItem> getItems(){
 		return items;
 	}

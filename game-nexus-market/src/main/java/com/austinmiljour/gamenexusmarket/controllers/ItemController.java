@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.austinmiljour.gamenexusmarket.models.Item;
 import com.austinmiljour.gamenexusmarket.services.CartService;
@@ -35,15 +36,15 @@ public class ItemController {
 	
 	//Add Item to Cart Process
 	@GetMapping("/item/add/{id}")
-	public String addItemToCart(@PathVariable("id") Long id, Model model) {
+	public String addItemToCart(@PathVariable("id") Long id, Model model, RedirectAttributes redirectAttributes ) {
 		Item item = itemService .oneItem(id);
 		if (item != null && item.getInventory() > 0) {
 			cartService.addItem(item);
-			model.addAttribute("successMessage", "Item add to cart successfully!");
+			redirectAttributes.addFlashAttribute("successMessage", "Item add to cart successfully!");
 		} else {
-			model.addAttribute("errorMessage", "Item is not currently available.");
+			redirectAttributes.addFlashAttribute("errorMessage", "Item is not currently available.");
 		}
-		return "redirect:/item/" + id;
+		return "redirect:/shoppingCart";
 	}
 	
 	// All Items Page
