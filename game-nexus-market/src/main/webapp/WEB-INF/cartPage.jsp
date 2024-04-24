@@ -13,7 +13,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Test</title>
+<title>Cart</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link
 	href="https://cdn.jsdelivr.net/npm/daisyui@4.9.0/dist/full.min.css"
@@ -130,7 +130,12 @@
 
 	<!-- Body -->
 	<div>
-		<h1 class="text-center mb-5 text-4xl font-semibold dark:text-white my-3">Shopping Cart Items</h1>
+		<c:if test="${not empty cartItems}">
+			<h1 class="text-center mb-5 mt-10 text-4xl font-semibold dark:text-white my-3">Shopping Cart</h1>
+		</c:if>
+		<c:if test="${!not empty cartItems}">
+			<h1 class="text-center mb-5 mt-10 text-4xl font-semibold dark:text-white my-3">Your shopping cart is empty...</h1>
+		</c:if>
 		
 		<div class="m-10 text-center">
 		<c:if test="${not empty successMessage}">
@@ -143,47 +148,60 @@
         		<c:out value="${errorMessage}"/>
     		</div>
 		</c:if>
+		<c:if test="${not empty removeMessage}">
+    		<div class="alert alert-error">
+        		<c:out value="${removeMessage}"/>
+    		</div>
+		</c:if>
 		</div>
-<div class="flex justify-center items-center w-full">
-	<div class="relative overflow-x-auto mx-10 w-3/4">
-	    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-	        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-	            <tr>
-	            	<th scope="col" class="px-6 py-3"></th>
-	                <th scope="col" class="px-6 py-3">Product name</th>
-	                <th scope="col" class="px-6 py-3">Quantity</th>
-	                <th scope="col" class="px-6 py-3">Price</th>
-	            </tr>
-	        </thead>
-	        <tbody>
-	            <c:forEach items="${cartItems}" var="cartItem">
-	                <c:if test="${cartItem != null && cartItem.item != null}">
-	                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-	                        <th scope="row" class="px-6 py-4 text-4xl font-medium text-gray-900 whitespace-nowrap dark:text-white">
-	                            <a href="/item/${cartItem.item.id}"><img alt="${cartItem.item.name}" src="${cartItem.item.imageLink}" class="max-h-40"></a>
-	                        </th>
-	                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-	                            <a href="/item/${cartItem.item.id}"><c:out value="${cartItem.item.name}"/></a>
-	                        </th>
-	                        <td class="px-6 py-4">
-	                            <c:out value="${cartItem.quantity}"/>
-	                        </td>
-	                        <td class="px-6 py-4">
-	                            $<c:out value="${cartItem.item.price}"/>
-	                        </td>
-	                    </tr>
-	                </c:if>
-	            </c:forEach>
-	            <tr scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-	            	<th scope="col" class="px-6 py-3"></th>
-	            	<th scope="col" class="px-6 py-3"></th>
-	            	<th scope="col" class="px-6 py-3"></th>
-	            	<th class="px-6 py-4">Total Price: $${total}</th>
-	            </tr>
-	        </tbody>
-	    </table>
-	</div>
-</div>
+
+		<c:if test="${not empty cartItems}">
+			<div class="flex justify-center items-center w-full">
+				<div class="relative overflow-x-auto mx-1 w-max">
+				    <table class="w-full text-sm sm:text-base text-center rtl:text-right text-gray-500 dark:text-gray-400">
+					    <thead class="text-sm md:text-lg text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+					        <tr>
+					            <th scope="col" class="hidden sm:table-cell px-6 py-3"></th>
+					            <th scope="col" class="sm:text-sm md:text-lg px-6 py-3 break-words">Product name</th>
+					            <th scope="col" class="hidden sm:table-cell px-6 py-3 break-words">Quantity</th>
+					            <th scope="col" class="px-6 py-3 break-words">Actions</th>
+					            <th scope="col" class="px-6 py-3 break-words">Price</th>
+					        </tr>
+					    </thead>
+					    <tbody>
+					        <c:forEach items="${cartItems}" var="cartItem">
+					            <c:if test="${cartItem != null && cartItem.item != null}">
+					                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+					                    <th scope="row" class="hidden sm:table-cell px-6 py-4 font-medium text-gray-900 whitespace-normal dark:text-white text-center break-words">
+					                        <a href="/item/${cartItem.item.id}" class="inline-block">
+					                            <img alt="${cartItem.item.name}" src="${cartItem.item.imageLink}" class="mx-auto max-h-40">
+					                        </a>
+					                    </th>
+					                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-normal dark:text-white break-words">
+					                        <a href="/item/${cartItem.item.id}"><c:out value="${cartItem.item.name}"/></a>
+					                    </th>
+					                    <td class="hidden sm:table-cell px-6 py-3 break-words">
+					                        <c:out value="${cartItem.quantity}"/>
+					                    </td>
+					                    <td class="px-4 py-2 break-words">
+					                        <a href="/item/add/${cartItem.item.id}" class="text-success">Add</a> ||
+					                        <a href="/cart/remove/${cartItem.item.id}" class="text-error">Remove</a>
+					                    </td>
+					                    <td class="px-4 py-2 break-words">
+					                        $<c:out value="${cartItem.getTotalPrice()}"/>
+					                    </td>
+					                </tr>
+					            </c:if>
+					        </c:forEach>
+					    </tbody>
+					</table>
+				    <div class="text-right my-3">
+				    	<p class="my-3 mr-5">Total Price: $${total}</p>
+				    	<p class="my-3 mr-5"><a href="/" class="btn btn-primary">Checkout</a></p>
+				    </div>
+				</div>
+			</div>
+		</c:if>
 		
 	</div>
 

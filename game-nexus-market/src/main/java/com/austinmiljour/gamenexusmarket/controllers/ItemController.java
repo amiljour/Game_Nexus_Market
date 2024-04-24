@@ -34,7 +34,7 @@ public class ItemController {
 		return "itemDetails.jsp";
 	}
 	
-	//Add Item to Cart Process
+	// Add Item to Cart Process
 	@GetMapping("/item/add/{id}")
 	public String addItemToCart(@PathVariable("id") Long id, Model model, RedirectAttributes redirectAttributes ) {
 		Item item = itemService .oneItem(id);
@@ -44,6 +44,14 @@ public class ItemController {
 		} else {
 			redirectAttributes.addFlashAttribute("errorMessage", "Item is not currently available.");
 		}
+		return "redirect:/shoppingCart";
+	}
+	
+	// Remove Item From Cart
+	@GetMapping("/cart/remove/{id}")
+	public String removeItemFromCart(@PathVariable("id") Long id, RedirectAttributes redirectAttributes) {
+		redirectAttributes.addFlashAttribute("removeMessage", "Item was successfully removed from cart.");
+		cartService.removeItem(id);
 		return "redirect:/shoppingCart";
 	}
 	
