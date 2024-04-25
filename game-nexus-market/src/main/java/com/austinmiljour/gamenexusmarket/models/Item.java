@@ -50,7 +50,7 @@ public class Item {
 	private String description;
 	
 	// this is to link the tables
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch =  FetchType.EAGER)
 	@JoinColumn(name="category_id") // this is the foreign key in MySQL
 	private Category category;
 	

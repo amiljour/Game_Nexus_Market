@@ -13,7 +13,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Cart</title>
+<title>Checkout</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link
 	href="https://cdn.jsdelivr.net/npm/daisyui@4.9.0/dist/full.min.css"
@@ -26,7 +26,7 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 </head>
 <body>
-		<!-- Header -->
+	<!-- Header -->
 	<div>
 		<nav class="border-gray-200 dark:bg-gray-900">
 			<div
@@ -130,40 +130,11 @@
 
 	<!-- Body -->
 	<div>
-		<c:if test="${not empty cartItems}">
-			<h1 class="text-center mt-5 sm:text-4xl text-2xl font-semibold dark:text-white mt-3">Shopping Cart</h1>
-		</c:if>
-		<c:if test="${!not empty cartItems}">
-			<div class="m-10 text-center">
-				<c:if test="${not empty emptyMessage}">
-		    		<div class="alert alert-warning">
-		        		<c:out value="${emptyMessage}"/>
-		   			</div>
-				</c:if>
-			</div>
-			<h1 class="text-center sm:text-4xl text-2xl font-semibold dark:text-white mt-3">Your shopping cart is empty...</h1>
-		</c:if>
+	
+		<h1 class="text-center mt-5 sm:text-4xl text-2xl font-semibold dark:text-white mt-3">Checkout</h1>
 		
-		<div class="m-10 text-center">
-			<c:if test="${not empty successMessage}">
-	    		<div class="alert alert-success">
-	        		<c:out value="${successMessage}"/>
-	   			</div>
-			</c:if>
-			<c:if test="${not empty errorMessage}">
-	    		<div class="alert alert-warning">
-	        		<c:out value="${errorMessage}"/>
-	    		</div>
-			</c:if>
-			<c:if test="${not empty removeMessage}">
-	    		<div class="alert alert-error">
-	        		<c:out value="${removeMessage}"/>
-	    		</div>
-			</c:if>
-		</div>
-
 		<c:if test="${not empty cartItems}">
-			<div class="flex justify-center items-center w-full">
+			<div class="flex justify-center items-center w-full my-10">
 				<div class="relative overflow-x-auto mx-1 w-max">
 				    <table class="w-full text-sm sm:text-base text-center rtl:text-right text-gray-500 dark:text-gray-400">
 					    <thead class="text-sm md:text-lg text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -172,7 +143,6 @@
 					            <th scope="col" class="sm:text-sm md:text-lg px-6 py-3 break-words">Product name</th>
 					            <th scope="col" class="hidden sm:table-cell px-6 py-3 break-words">Category</th>
 					            <th scope="col" class="hidden sm:table-cell px-6 py-3 break-words">Quantity</th>
-					            <th scope="col" class="px-6 py-3 break-words">Actions</th>
 					            <th scope="col" class="px-6 py-3 break-words">Price</th>
 					        </tr>
 					    </thead>
@@ -195,10 +165,6 @@
 					                        <c:out value="${cartItem.quantity}"/>
 					                    </td>
 					                    <td class="px-4 py-2 break-words">
-					                        <a href="/item/add/${cartItem.item.id}" class="text-success">Add</a> ||
-					                        <a href="/cart/remove/${cartItem.item.id}" class="text-error">Remove</a>
-					                    </td>
-					                    <td class="px-4 py-2 break-words">
 					                        $<c:out value="${cartItem.getTotalPrice()}"/>
 					                    </td>
 					                </tr>
@@ -208,12 +174,11 @@
 					</table>
 				    <div class="text-right my-3">
 				    	<p class="my-3 mr-5">Total Price: $${total}</p>
-				    	<p class="my-3 mr-5"><a href="/checkout" class="btn btn-primary">Checkout</a></p>
+				    	<p class="my-3 mr-5"><a href="/checkout" class="btn btn-primary">Buy Now!</a></p>
 				    </div>
 				</div>
 			</div>
 		</c:if>
-		
 	</div>
 
 	<!-- Footer -->

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.austinmiljour.gamenexusmarket.models.CartItem;
 import com.austinmiljour.gamenexusmarket.models.Category;
@@ -63,4 +64,24 @@ public class HomeController {
 	    return "cartPage.jsp";
 	}
 	
+	// Checkout Page
+	@GetMapping("/checkout")
+	public String checkoutPage(Model model, RedirectAttributes redirectAttributes) {
+		// Route Protection
+		if (cartService.getItemCount() == 0) {
+			redirectAttributes.addFlashAttribute("emptyMessage", "Your shopping cart is empty.");
+			return "redirect:/shoppingCart";
+		}
+		model.addAttribute("categories", categoryService.allCategories());
+		model.addAttribute("cartSize", cartService.getItemCount());
+	    Map<Long, CartItem> items = cartService.getItems();
+	    if (items == null || items.isEmpty()) {
+	        model.addAttribute("cartItems", Collections.emptyMap());
+	    } else {
+	        model.addAttribute("cartItems", items.values());
+	    }
+	    model.addAttribute("total", cartService.getTotal());
+	    model.addAttribute("items", itemService.allItemes());
+	    return "checkoutPage.jsp";
+	}
 }
