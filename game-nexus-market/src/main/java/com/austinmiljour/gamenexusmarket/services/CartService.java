@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.annotation.SessionScope;
 
 import com.austinmiljour.gamenexusmarket.models.CartItem;
@@ -12,6 +13,12 @@ import com.austinmiljour.gamenexusmarket.models.Item;
 @Service
 @SessionScope
 public class CartService {
+	
+	private final ItemService itemService;
+
+    public CartService(ItemService itemService) {
+        this.itemService = itemService;
+    }
 	
 	private Map<Long, CartItem> items = new HashMap<>();
 	
@@ -51,6 +58,20 @@ public class CartService {
 	    }
 	    return total;
 	}
+	
+	@Transactional
+    public boolean checkout() {
+        boolean allUpdated = true;
+        for (CartItem cartItem : items.values()) {
+            boolean result = itemService.decrementItemInventory(cartItem.getItem().getId(), cartItem.getQuantity());
+            if (!result) {
+                allUpdated = false;
+                break;
+            }
+        }
+
+        return allUpdated;
+    }
 	
 	public Map<Long, CartItem> getItems(){
 		return items;

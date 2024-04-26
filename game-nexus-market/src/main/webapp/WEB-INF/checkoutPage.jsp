@@ -131,10 +131,10 @@
 	<!-- Body -->
 	<div>
 		<div class="flex justify-center items-center flex-col w-full mt-5">
-			<h2 class="text-center sm:text-2xl text-xl font-semibold my-3">Shipping Info</h2>
+			<h2 class="text-center sm:text-2xl text-xl font-semibold my-3">Shipping and Billing Info</h2>
 			<form class="relative overflow-x-auto mx-1 w-10/12 mb-5">
 		
-				<!-- Top 2 on the grid -->
+				<!-- 2 lines on the form -->
 		   		<div class="grid md:grid-cols-2 md:gap-6 mt-5">
 		   
 				   	<!-- First Name -->
@@ -162,12 +162,12 @@
 			      	<label for="floating_address" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Address</label>
 			  	</div>
 			  
-			  	<!-- Second 2 on the grid -->
+			  	<!-- 2 lines on the form -->
 			   	<div class="grid md:grid-cols-2 md:gap-6">
 			   
 				   	<!-- City -->
 				   	<div class="relative z-0 w-full mb-5 group">
-				       <input type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" name="floating_city" id="floating_city" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+				       <input type="text" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" name="floating_city" id="floating_city" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
 				       <label for="floating_city" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">City</label>
 				   	</div>
 				   
@@ -177,10 +177,110 @@
 				       	<label for="floating_state" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">State</label>
 					</div>
 				</div>
+				
+				<!-- 2 lines on the form -->
+			   	<div class="grid md:grid-cols-2 md:gap-6">
+			   
+				   	<!-- Zip Code -->
+				   	<div class="relative z-0 w-full mb-5 group">
+				       <input type="number" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" name="floating_zip_code" id="floating_zip_code" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+				       <label for="floating_zip_code" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Zip Code</label>
+				   	</div>
+				   
+				   	<!-- Phone Number -->
+				   	<div class="relative z-0 w-full mb-5 group">
+				       	<input type="tel" name="floating_phone_number" id="floating_phone_number" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+				       	<label for="floating_phone_number" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Phone Number</label>
+					</div>
+				</div>
+				
+				<!-- 2 lines on the form -->
+			   	<div class="grid md:grid-cols-2 md:gap-6">
+			   	
+			   		<!-- Name on Card -->
+				   	<div class="relative z-0 w-full mb-5 group">
+				       	<input type="text" name="floating_card_full_name" id="floating_card_full_name" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+				       	<label for="floating_card_full_name" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Name on Card</label>
+					</div>
+			   
+				   	<!-- Card Number -->
+				   	<div class="relative z-0 w-full mb-5 group">
+				       <input type="text" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" name="floating_card_number" id="floating_card_number" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+				       <label for="floating_card_number" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Card Number</label>
+				   	</div>
+				   
+				</div>
+				
+				<!-- 2 lines on the form -->
+			   	<div class="grid md:grid-cols-2 md:gap-6">
+			   	
+			   		<!-- Expiration Date -->
+				   	<div class="relative z-0 w-full mb-5 group">
+				       	<input type="text" name="floating_exp_date" id="floating_exp_date" pattern="\d{2}/\d{4}" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="  " required />
+				       	<label for="floating_exp_date" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Expiration Date (MM/YYYY)</label>
+					</div>
+			   
+				   	<!-- CCV Numberr -->
+				   	<div class="relative z-0 w-full mb-5 group">
+				       <input type="number" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" name="floating_ccv_number" id="floating_ccv_number" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="  " required />
+				       <label for="floating_ccv_number" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">CCV Number</label>
+				   	</div>
+				   	
+				</div>
+				
+				<div class="mt-4 mx-1 flex flex-col">
+				    <label class="my-2 ">
+				        <input type="radio" name="addressType" value="shipping" checked onclick="toggleAddress(false)">
+				        Use Shipping Address
+				    </label>
+				    <label class="my-2">
+				        <input type="radio" name="addressType" value="different" onclick="toggleAddress(true)">
+				        Use a Different Billing Address
+				    </label>
+				</div>
+				
+				<!-- Script for New Address -->
+				<script>
+				function toggleAddress(show) {
+				    document.getElementById('billingAddressForm').style.display = show ? 'block' : 'none';
+				}
+				</script>
+				
+				<div id="billingAddressForm" style="display: none;">
+				    <!-- Billing Address Form Fields -->
+				    <div class="grid md:grid-cols-4 md:gap-6 mt-5">
+				    
+						<!-- Address -->
+					  	<div class="relative z-0 w-full mb-5 group">
+					      	<input type="text" name="floating_billing_address" id="floating_billing_address" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+					      	<label for="floating_billing_address" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Billing Address</label>
+					  	</div>
+				   
+					   	<!-- City -->
+					   	<div class="relative z-0 w-full mb-5 group">
+					       <input type="text" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" name="floating_billing_city" id="floating_city" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+					       <label for="floating_billing_city" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Billing City</label>
+					   	</div>
+					   
+					   	<!-- State -->
+					   	<div class="relative z-0 w-full mb-5 group">
+					       	<input type="text" name="floating_billing_state" id="floating_billing_state" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+					       	<label for="floating_billing_state" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Billing State</label>
+						</div>
+						
+						<!-- Zip Code -->
+					   	<div class="relative z-0 w-full mb-5 group">
+					       <input type="number" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" name="floating_billing_zip_code" id="floating_billing_zip_code" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+					       <label for="floating_billing_zip_code" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Billing Zip Code</label>
+					   	</div>
+					
+					</div>
+					
+				</div>
 		 
 		  		<c:if test="${not empty cartItems}">
 					<div class="flex justify-center items-center w-full">
-						<div class="relative overflow-x-auto mx-1 w-full">
+						<div class="relative overflow-x-auto w-full">
 							<h3 class="text-center sm:text-2xl text-xl font-semibold my-3">Items in Cart</h3>
 				    		<table class="w-full text-sm sm:text-base text-center rtl:text-right text-gray-500 dark:text-gray-400">
 					    		<thead class="text-sm md:text-lg text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -195,13 +295,13 @@
 					    		<tbody>
 					        		<c:forEach items="${cartItems}" var="cartItem">
 					            		<c:if test="${cartItem != null && cartItem.item != null}">
-					                		<tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-							                    <th scope="row" class="hidden sm:table-cell px-6 py-4 font-medium text-gray-900 whitespace-normal dark:text-white text-center break-words">
+					                		<tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 text-lg">
+							                    <td scope="row" class="hidden sm:table-cell px-6 py-3 font-medium text-gray-900 whitespace-normal dark:text-white text-center break-words">
 							                    	<img alt="${cartItem.item.name}" src="${cartItem.item.imageLink}" class="mx-auto max-h-40">
-							                    </th>
-							                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-normal dark:text-white break-words">
+							                    </td>
+							                    <td scope="row" class="px-6 py-3 font-medium text-gray-900 whitespace-normal dark:text-white break-words">
 							                        <c:out value="${cartItem.item.name}"/>
-							                    </th>
+							                    </td>
 							                    <td class="hidden sm:table-cell px-6 py-3 break-words">
 							                        <c:out value="${cartItem.item.category.name}"/>
 							                    </td>
@@ -218,7 +318,8 @@
 							</table>
 				    		<div class="text-center my-3 flex flex-col justify-center items-center bg-base">
 				    			<p class="my-3 mr-5 text-xl text-secondary">Total Price: $${total}</p>
-				    			<button type="submit" class="my-3 mr-5 btn btn-md lg:btn-lg btn-outline btn-primary">Buy Now!</button>
+				    			<!-- <button type="submit" class="my-3 mr-5 btn btn-md lg:btn-lg btn-outline btn-primary">Buy Now!</button> -->
+				    			<a href="/purchase" class="my-3 mr-5 btn btn-md lg:btn-lg btn-outline btn-primary">Buy Now!</a>
 				    		</div>
 						</div>
 					</div>

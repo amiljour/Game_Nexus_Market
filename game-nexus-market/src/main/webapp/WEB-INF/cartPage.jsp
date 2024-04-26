@@ -184,18 +184,18 @@
 					                            <img alt="${cartItem.item.name}" src="${cartItem.item.imageLink}" class="mx-auto max-h-40">
 					                        </a>
 					                    </th>
-					                    <th scope="row" class="px-6 py-4 text-xl font-medium text-gray-900 whitespace-normal dark:text-white break-words">
+					                    <th scope="row" class="px-6 py-4 text-lg font-medium text-gray-900 whitespace-normal dark:text-white break-words">
 					                        <a href="/item/${cartItem.item.id}"><c:out value="${cartItem.item.name}"/></a>
 					                    </th>
 					                    <td class="hidden sm:table-cell px-6 py-3 break-words text-lg">
 					                        <c:out value="${cartItem.item.category.name}"/>
 					                    </td>
-					                    <th class="px-6 py-3 break-words text-2xl">
-					                       <a href="/item/add/${cartItem.item.id}" class="text-success">+</a> | <c:out value="${cartItem.quantity}"/> | 
-					                        <a href="/cart/remove/${cartItem.item.id}" class="text-error">-</a>
+					                    <th class="px-6 py-3 break-words text-lg">
+					                       <a href="/item/add/${cartItem.item.id}" class="text-success text-lg">+ | </a><c:out value="${cartItem.quantity}"/> 
+					                        <a href="/cart/remove/${cartItem.item.id}" class="text-error text-lg"> | -</a>
 					                    </th>
 					                    
-					                    <td class="px-4 py-2 break-words text-lg">
+					                    <td class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 text-lg">
 					                        $<c:out value="${cartItem.getTotalPrice()}"/>
 					                    </td>
 					                </tr>

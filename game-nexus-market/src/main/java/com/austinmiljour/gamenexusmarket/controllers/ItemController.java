@@ -55,6 +55,12 @@ public class ItemController {
 		return "redirect:/shoppingCart";
 	}
 	
+	// Remove All Items from Cart
+	@GetMapping("/clearCart")
+	public String clearCart() {
+		return "redirect:/shoppingCart";
+	}
+	
 	// All Items Page
 	@GetMapping("/allItems")
 	public String showAllItems(Model model) {
@@ -90,5 +96,16 @@ public class ItemController {
 		model.addAttribute("cartSize", cartService.getItemCount());
 		return "itemsOnSale.jsp";
 	}
+	
+	// Process Checkout
+	@GetMapping("/purchase")
+	public String processCheckout(Model model) {
+		boolean success = cartService.checkout();
+        if (success) {
+            return "redirect:/thankYou";
+        } else {
+            return "redirect:/cart";
+        }
+    }
 	
 }

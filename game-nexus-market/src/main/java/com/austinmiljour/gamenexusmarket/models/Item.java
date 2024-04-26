@@ -90,6 +90,12 @@ public class Item {
             return price;
         }
     }
+	
+	public void decrementInventory() {
+        if (this.inventory > 0) {
+            this.inventory--;
+        }
+    }
 
 	//	============ Getters and Setters ============
 

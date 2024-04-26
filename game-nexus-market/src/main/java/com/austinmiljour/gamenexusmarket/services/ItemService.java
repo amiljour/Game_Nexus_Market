@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.austinmiljour.gamenexusmarket.models.Item;
 import com.austinmiljour.gamenexusmarket.repositories.ItemRepository;
@@ -36,6 +37,17 @@ public class ItemService {
 			return null;
 		}
 	}
+	
+	@Transactional
+    public boolean decrementItemInventory(Long itemId, int quantity) {
+        Item item = itemRepo.findById(itemId).orElse(null);
+        if (item != null && item.getInventory() >= quantity) {
+            item.setInventory(item.getInventory() - quantity);
+            itemRepo.save(item);
+            return true;
+        }
+        return false;
+    }
 
 	// Update
 		public Item updateItem(Item oneItem) {
