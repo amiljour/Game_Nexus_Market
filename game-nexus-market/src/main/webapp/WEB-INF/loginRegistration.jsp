@@ -135,73 +135,73 @@
 
 
 
-  <!-- Register Form -->
-<div class="flex flex-col lg:flex-row gap-5 m-5">
-
-  <div class="flex flex-col w-full lg:w-600px mx-auto mb-5">
-    <h2 class="text-center mb-5 text-3xl font-semibold dark:text-white">Register</h2>
-    <form:form action="/register" method="POST" modelAttribute="newUser">
-      
-      <form:input type="hidden" path="admin" value="false" />
-
-      <div class="mb-4">
-        <form:label path="firstName" class="block text-sm font-medium mb-2">First Name</form:label>
-        <form:input type="text" path="firstName" class="input input-bordered rounded-md block w-full bg-transparent" placeholder="First Name..." />
-        <form:errors path="firstName" class="text-error text-center" />
-      </div>
-      
-      <div class="mb-4">
-        <form:label path="lastName" class="block text-sm font-medium mb-2">Last Name</form:label>
-        <form:input type="text" path="lastName" class="input input-bordered rounded-md block w-full bg-transparent" placeholder="Last Name..." />
-        <form:errors path="lastName" class="text-error text-center" />
-      </div>
-      
-      <div class="mb-4">
-        <form:label path="email" class="block text-sm font-medium mb-2">Email</form:label>
-        <form:input type="text" path="email" class="input input-bordered rounded-md block w-full bg-transparent" placeholder="Email..." />
-        <form:errors path="email" class="text-error text-center" />
-      </div>
-      
-      <div class="mb-4">
-        <form:label path="password" class="block text-sm font-medium mb-2">Password</form:label>
-        <form:input type="password" path="password" class="input input-bordered rounded-md block w-full bg-transparent" placeholder="Password..." />
-        <form:errors path="password" class="text-error text-center" />
-      </div>
-
-      <div class="mb-4">
-        <form:label path="confirm" class="block text-sm font-medium mb-2">Confirm Password</form:label>
-        <form:input type="password" path="confirm" class="input input-bordered rounded-md block w-full bg-transparent" placeholder="Confirm Password..." />
-        <form:errors path="confirm" class="text-error text-center" />
-      </div>
-
-      <button type="submit" class="btn btn-outline btn-secondary">Register</button>
-      
-    </form:form>
-  </div>
-
-  <!-- Login Form -->
-  <div class="flex flex-col w-full lg:w-600px mx-auto">
-    <h2 class="text-center mb-5 text-3xl font-semibold dark:text-white">Login</h2>
-    <form:form action="/login" method="POST" modelAttribute="newLogin">
-      
-      <div class="mb-4">
-        <form:label path="email" class="block text-sm font-medium mb-2">Email</form:label>
-        <form:input type="text" path="email" class="input input-bordered rounded-md block w-full bg-transparent" placeholder="Email..." />
-        <form:errors path="email" class="text-error text-center" />
-      </div>
-      
-      <div class="mb-4">
-        <form:label path="password" class="block text-sm font-medium mb-2">Password</form:label>
-        <form:input type="password" path="password" class="input input-bordered rounded-md block w-full bg-transparent" placeholder="Password..." />
-        <form:errors path="password" class="text-error text-center" />
-      </div>
-
-      <button type="submit" class="btn btn-outline btn-primary">Login</button>
-
-    </form:form>
-  </div>
-  
-</div>
+  	<!-- Register Form -->
+	<div class="flex flex-col lg:flex-row gap-5 m-5">
+	
+	  <div class="flex flex-col w-full lg:w-600px mx-auto mb-5">
+	    <h2 class="text-center mb-5 text-3xl font-semibold dark:text-white">Register</h2>
+	    <form:form action="/register" method="POST" modelAttribute="newUser">
+	      
+	      <form:input type="hidden" path="admin" value="false" />
+	
+	      <div class="mb-4">
+	        <form:label path="firstName" class="block text-sm font-medium mb-2">First Name</form:label>
+	        <form:input type="text" path="firstName" class="input input-bordered rounded-md block w-full bg-transparent" placeholder="First Name..." />
+	        <form:errors path="firstName" class="text-error text-center" />
+	      </div>
+	      
+	      <div class="mb-4">
+	        <form:label path="lastName" class="block text-sm font-medium mb-2">Last Name</form:label>
+	        <form:input type="text" path="lastName" class="input input-bordered rounded-md block w-full bg-transparent" placeholder="Last Name..." />
+	        <form:errors path="lastName" class="text-error text-center" />
+	      </div>
+	      
+	      <div class="mb-4">
+	        <form:label path="email" class="block text-sm font-medium mb-2">Email</form:label>
+	        <form:input type="text" path="email" class="input input-bordered rounded-md block w-full bg-transparent" placeholder="Email..." />
+	        <form:errors path="email" class="text-error text-center" />
+	      </div>
+	      
+	      <div class="mb-4">
+	        <form:label path="password" class="block text-sm font-medium mb-2">Password</form:label>
+	        <form:input type="password" path="password" class="input input-bordered rounded-md block w-full bg-transparent" placeholder="Password..." />
+	        <form:errors path="password" class="text-error text-center" />
+	      </div>
+	
+	      <div class="mb-4">
+	        <form:label path="confirm" class="block text-sm font-medium mb-2">Confirm Password</form:label>
+	        <form:input type="password" path="confirm" class="input input-bordered rounded-md block w-full bg-transparent" placeholder="Confirm Password..." />
+	        <form:errors path="confirm" class="text-error text-center" />
+	      </div>
+	
+	      <button type="submit" class="btn btn-outline btn-secondary">Register</button>
+	      
+	    </form:form>
+	  </div>
+	
+	  <!-- Login Form -->
+	  <div class="flex flex-col w-full lg:w-600px mx-auto">
+	    <h2 class="text-center mb-5 text-3xl font-semibold dark:text-white">Login</h2>
+	    <form:form action="/login" method="POST" modelAttribute="newLogin">
+	      
+	      <div class="mb-4">
+	        <form:label path="email" class="block text-sm font-medium mb-2">Email</form:label>
+	        <form:input type="text" path="email" class="input input-bordered rounded-md block w-full bg-transparent" placeholder="Email..." />
+	        <form:errors path="email" class="text-error text-center" />
+	      </div>
+	      
+	      <div class="mb-4">
+	        <form:label path="password" class="block text-sm font-medium mb-2">Password</form:label>
+	        <form:input type="password" path="password" class="input input-bordered rounded-md block w-full bg-transparent" placeholder="Password..." />
+	        <form:errors path="password" class="text-error text-center" />
+	      </div>
+	
+	      <button type="submit" class="btn btn-outline btn-primary">Login</button>
+	
+	    </form:form>
+	  </div>
+	  
+	</div>
 
 
 	<!-- Footer -->

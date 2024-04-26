@@ -31,10 +31,10 @@
 		<nav class="border-gray-200 dark:bg-gray-900">
 			<div
 				class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
-				<a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
+				<a href="" class="flex items-center space-x-3 rtl:space-x-reverse">
 					<img src="/images/GameController.png" class="h-8"
 					alt="Game Controller Logo" /> <span
-					class="text-center sm:text-5xl text-xl font-semibold dark:text-white">Game Nexus Market</span>
+					class="text-center sm:text-5xl text-xl font-semibold dark:text-white">Checkout</span>
 				</a>
 
 				<div class="flex g-2 items-center">
@@ -130,55 +130,101 @@
 
 	<!-- Body -->
 	<div>
-	
-		<h1 class="text-center mt-5 sm:text-4xl text-2xl font-semibold dark:text-white mt-3">Checkout</h1>
+		<div class="flex justify-center items-center flex-col w-full mt-5">
+			<h2 class="text-center sm:text-2xl text-xl font-semibold my-3">Shipping Info</h2>
+			<form class="relative overflow-x-auto mx-1 w-10/12 mb-5">
 		
-		<c:if test="${not empty cartItems}">
-			<div class="flex justify-center items-center w-full my-10">
-				<div class="relative overflow-x-auto mx-1 w-max">
-				    <table class="w-full text-sm sm:text-base text-center rtl:text-right text-gray-500 dark:text-gray-400">
-					    <thead class="text-sm md:text-lg text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-					        <tr>
-					            <th scope="col" class="hidden sm:table-cell px-6 py-3"></th>
-					            <th scope="col" class="sm:text-sm md:text-lg px-6 py-3 break-words">Product name</th>
-					            <th scope="col" class="hidden sm:table-cell px-6 py-3 break-words">Category</th>
-					            <th scope="col" class="hidden sm:table-cell px-6 py-3 break-words">Quantity</th>
-					            <th scope="col" class="px-6 py-3 break-words">Price</th>
-					        </tr>
-					    </thead>
-					    <tbody>
-					        <c:forEach items="${cartItems}" var="cartItem">
-					            <c:if test="${cartItem != null && cartItem.item != null}">
-					                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-					                    <th scope="row" class="hidden sm:table-cell px-6 py-4 font-medium text-gray-900 whitespace-normal dark:text-white text-center break-words">
-					                        <a href="/item/${cartItem.item.id}" class="inline-block">
-					                            <img alt="${cartItem.item.name}" src="${cartItem.item.imageLink}" class="mx-auto max-h-40">
-					                        </a>
-					                    </th>
-					                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-normal dark:text-white break-words">
-					                        <a href="/item/${cartItem.item.id}"><c:out value="${cartItem.item.name}"/></a>
-					                    </th>
-					                    <td class="hidden sm:table-cell px-6 py-3 break-words">
-					                        <c:out value="${cartItem.item.category.name}"/>
-					                    </td>
-					                    <td class="hidden sm:table-cell px-6 py-3 break-words">
-					                        <c:out value="${cartItem.quantity}"/>
-					                    </td>
-					                    <td class="px-4 py-2 break-words">
-					                        $<c:out value="${cartItem.getTotalPrice()}"/>
-					                    </td>
-					                </tr>
-					            </c:if>
-					        </c:forEach>
-					    </tbody>
-					</table>
-				    <div class="text-right my-3">
-				    	<p class="my-3 mr-5">Total Price: $${total}</p>
-				    	<p class="my-3 mr-5"><a href="/checkout" class="btn btn-primary">Buy Now!</a></p>
+				<!-- Top 2 on the grid -->
+		   		<div class="grid md:grid-cols-2 md:gap-6 mt-5">
+		   
+				   	<!-- First Name -->
+				    <div class="relative z-0 w-full mb-5 group">
+				        <input type="text" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" name="floating_first_name" id="floating_first_name" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+				        <label for="floating_first_name" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">First Name</label>
 				    </div>
+				   
+				   	<!-- Last Name -->
+				    <div class="relative z-0 w-full mb-5 group">
+				        <input type="text" name="floating_last_name" id="floating_last_name" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+				        <label for="floating_last_name" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Last Name</label>
+				    </div>
+			  	</div>
+			  	
+			  	<!-- Email -->
+			  	<div class="relative z-0 w-full mb-5 group">
+			      	<input type="text" name="floating_email" id="floating_email" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+			      	<label for="floating_email" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email</label>
+			  	</div>
+			  	
+			  	<!-- Address -->
+			  	<div class="relative z-0 w-full mb-5 group">
+			      	<input type="text" name="floating_address" id="floating_address" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+			      	<label for="floating_address" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Address</label>
+			  	</div>
+			  
+			  	<!-- Second 2 on the grid -->
+			   	<div class="grid md:grid-cols-2 md:gap-6">
+			   
+				   	<!-- City -->
+				   	<div class="relative z-0 w-full mb-5 group">
+				       <input type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" name="floating_city" id="floating_city" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+				       <label for="floating_city" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">City</label>
+				   	</div>
+				   
+				   	<!-- State -->
+				   	<div class="relative z-0 w-full mb-5 group">
+				       	<input type="text" name="floating_state" id="floating_state" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+				       	<label for="floating_state" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">State</label>
+					</div>
 				</div>
-			</div>
-		</c:if>
+		 
+		  		<c:if test="${not empty cartItems}">
+					<div class="flex justify-center items-center w-full">
+						<div class="relative overflow-x-auto mx-1 w-full">
+							<h3 class="text-center sm:text-2xl text-xl font-semibold my-3">Items in Cart</h3>
+				    		<table class="w-full text-sm sm:text-base text-center rtl:text-right text-gray-500 dark:text-gray-400">
+					    		<thead class="text-sm md:text-lg text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+							        <tr>
+							            <th scope="col" class="hidden sm:table-cell px-6 py-3"></th>
+							            <th scope="col" class="sm:text-sm md:text-lg px-6 py-3 break-words">Product name</th>
+							            <th scope="col" class="hidden sm:table-cell px-6 py-3 break-words">Category</th>
+							            <th scope="col" class="px-6 py-3 break-words">Quantity</th>
+							            <th scope="col" class="px-6 py-3 break-words">Price</th>
+						        	</tr>
+						    	</thead>
+					    		<tbody>
+					        		<c:forEach items="${cartItems}" var="cartItem">
+					            		<c:if test="${cartItem != null && cartItem.item != null}">
+					                		<tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+							                    <th scope="row" class="hidden sm:table-cell px-6 py-4 font-medium text-gray-900 whitespace-normal dark:text-white text-center break-words">
+							                    	<img alt="${cartItem.item.name}" src="${cartItem.item.imageLink}" class="mx-auto max-h-40">
+							                    </th>
+							                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-normal dark:text-white break-words">
+							                        <c:out value="${cartItem.item.name}"/>
+							                    </th>
+							                    <td class="hidden sm:table-cell px-6 py-3 break-words">
+							                        <c:out value="${cartItem.item.category.name}"/>
+							                    </td>
+					                    		<td class="px-6 py-3 break-words">
+					                        		<c:out value="${cartItem.quantity}"/>
+					                    		</td>
+					                    		<td class="px-4 py-2 break-words">
+					                        		$<c:out value="${cartItem.getTotalPrice()}"/>
+					                    		</td>
+					                		</tr>
+					            		</c:if>
+					        		</c:forEach>
+					    		</tbody>
+							</table>
+				    		<div class="text-center my-3 flex flex-col justify-center items-center bg-base">
+				    			<p class="my-3 mr-5 text-xl text-secondary">Total Price: $${total}</p>
+				    			<button type="submit" class="my-3 mr-5 btn btn-md lg:btn-lg btn-outline btn-primary">Buy Now!</button>
+				    		</div>
+						</div>
+					</div>
+				</c:if>
+			</form>
+		</div>
 	</div>
 
 	<!-- Footer -->

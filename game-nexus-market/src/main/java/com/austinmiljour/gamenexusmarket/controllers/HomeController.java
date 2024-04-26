@@ -84,4 +84,25 @@ public class HomeController {
 	    model.addAttribute("items", itemService.allItemes());
 	    return "checkoutPage.jsp";
 	}
+	
+	// Thank You Page
+		@GetMapping("/thankYou")
+		public String thankYouPage(Model model, RedirectAttributes redirectAttributes) {
+			// Route Protection
+			if (cartService.getItemCount() == 0) {
+				redirectAttributes.addFlashAttribute("emptyMessage", "Your shopping cart is empty.");
+				return "redirect:/shoppingCart";
+			}
+			model.addAttribute("categories", categoryService.allCategories());
+			model.addAttribute("cartSize", cartService.getItemCount());
+		    Map<Long, CartItem> items = cartService.getItems();
+		    if (items == null || items.isEmpty()) {
+		        model.addAttribute("cartItems", Collections.emptyMap());
+		    } else {
+		        model.addAttribute("cartItems", items.values());
+		    }
+		    model.addAttribute("total", cartService.getTotal());
+		    model.addAttribute("items", itemService.allItemes());
+		    return "thankYouPage.jsp";
+		}
 }

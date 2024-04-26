@@ -164,15 +164,14 @@
 
 		<c:if test="${not empty cartItems}">
 			<div class="flex justify-center items-center w-full">
-				<div class="relative overflow-x-auto mx-1 w-max">
+				<div class="relative overflow-x-auto mx-1 w-10/12">
 				    <table class="w-full text-sm sm:text-base text-center rtl:text-right text-gray-500 dark:text-gray-400">
 					    <thead class="text-sm md:text-lg text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
 					        <tr>
 					            <th scope="col" class="hidden sm:table-cell px-6 py-3"></th>
 					            <th scope="col" class="sm:text-sm md:text-lg px-6 py-3 break-words">Product name</th>
 					            <th scope="col" class="hidden sm:table-cell px-6 py-3 break-words">Category</th>
-					            <th scope="col" class="hidden sm:table-cell px-6 py-3 break-words">Quantity</th>
-					            <th scope="col" class="px-6 py-3 break-words">Actions</th>
+					            <th scope="col" class="px-6 py-3 break-words">Quantity</th>
 					            <th scope="col" class="px-6 py-3 break-words">Price</th>
 					        </tr>
 					    </thead>
@@ -185,20 +184,18 @@
 					                            <img alt="${cartItem.item.name}" src="${cartItem.item.imageLink}" class="mx-auto max-h-40">
 					                        </a>
 					                    </th>
-					                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-normal dark:text-white break-words">
+					                    <th scope="row" class="px-6 py-4 text-xl font-medium text-gray-900 whitespace-normal dark:text-white break-words">
 					                        <a href="/item/${cartItem.item.id}"><c:out value="${cartItem.item.name}"/></a>
 					                    </th>
-					                    <td class="hidden sm:table-cell px-6 py-3 break-words">
+					                    <td class="hidden sm:table-cell px-6 py-3 break-words text-lg">
 					                        <c:out value="${cartItem.item.category.name}"/>
 					                    </td>
-					                    <td class="hidden sm:table-cell px-6 py-3 break-words">
-					                        <c:out value="${cartItem.quantity}"/>
-					                    </td>
-					                    <td class="px-4 py-2 break-words">
-					                        <a href="/item/add/${cartItem.item.id}" class="text-success">Add</a> ||
-					                        <a href="/cart/remove/${cartItem.item.id}" class="text-error">Remove</a>
-					                    </td>
-					                    <td class="px-4 py-2 break-words">
+					                    <th class="px-6 py-3 break-words text-2xl">
+					                       <a href="/item/add/${cartItem.item.id}" class="text-success">+</a> | <c:out value="${cartItem.quantity}"/> | 
+					                        <a href="/cart/remove/${cartItem.item.id}" class="text-error">-</a>
+					                    </th>
+					                    
+					                    <td class="px-4 py-2 break-words text-lg">
 					                        $<c:out value="${cartItem.getTotalPrice()}"/>
 					                    </td>
 					                </tr>
@@ -206,7 +203,7 @@
 					        </c:forEach>
 					    </tbody>
 					</table>
-				    <div class="text-right my-3">
+				    <div class=" my-3 text-xl flex items-center justify-end flex-column">
 				    	<p class="my-3 mr-5">Total Price: $${total}</p>
 				    	<p class="my-3 mr-5"><a href="/checkout" class="btn btn-primary">Checkout</a></p>
 				    </div>
