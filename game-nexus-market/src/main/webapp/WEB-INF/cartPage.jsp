@@ -26,7 +26,7 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 </head>
 <body>
-		<!-- Header -->
+	<!-- Header -->
 	<div>
 		<nav class="border-gray-200 dark:bg-gray-900">
 			<div

@@ -34,7 +34,7 @@
 				<a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
 					<img src="/images/GameController.png" class="h-8"
 					alt="Game Controller Logo" /> <span
-					class="self-center text-5xl font-semibold dark:text-white">Game Nexus Market</span>
+					class="text-center sm:text-5xl text-xl font-semibold dark:text-white">Game Nexus Market</span>
 				</a>
 
 				<div class="flex g-2 items-center">
@@ -45,13 +45,12 @@
 
 			</div>
 		</nav>
-		<nav class="bg-gray-50 dark:bg-gray-700">
-			<div class="max-w-screen-xl px-4 py-3 mx-auto">
-				<div class="flex items-center ">
-					<ul
-						class="flex flex-row flex-wrap font-medium mt-0 space-x-8 rtl:space-x-reverse text-sm items-center">
+		<nav class="hidden md:flex bg-gray-50 dark:bg-gray-700">
+    <div class="max-w-screen-xl px-4 py-3 mx-auto">
+        <div class="flex items-center">
+            <ul class="flex flex-row flex-wrap font-medium mt-0 space-x-8 rtl:space-x-reverse text-sm items-center">
 						<li><a href="/"
-							class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500"
+							class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
 							aria-current="page">Dashboard</a></li>
 						<!-- Category Dropdown Menu -->
 						<li>
@@ -78,6 +77,7 @@
         							</c:forEach>
 								</ul>
 							</div>
+							</li>
 							
 						<li><a href="/allItems"
 							class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">All
@@ -128,6 +128,92 @@
 		</nav>
 	</div>
 
+<!-- Mobile Menu Button -->
+<div class="md:hidden flex items-center sticky top-0 my-2 z-50 bg-base-100">
+    <button id="mobile-menu-button" class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">
+        <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+        </svg>
+        <span class="sr-only">Open main menu</span>
+    </button>
+    
+    <h2 id="mobile-menu-trigger" class="cursor-pointer">Dashboard</h2>
+</div>
+
+<script>
+    document.getElementById('mobile-menu-button').addEventListener('click', function() {
+        var dropdown = document.getElementById('mobile-menu');
+        dropdown.classList.toggle('hidden');
+    });
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    // Function to toggle menu visibility
+    function toggleMenu() {
+        var dropdown = document.getElementById('mobile-menu');
+        if (dropdown) { // Check if the dropdown element exists
+            dropdown.classList.toggle('hidden');
+        } else {
+            console.log('Dropdown menu not found!');
+        }
+    }
+
+    // Select the mobile menu button
+    var menuButton = document.getElementById('mobile-menu-button');
+    if (menuButton) {
+        menuButton.addEventListener('click', toggleMenu);
+    } else {
+        console.log('Mobile menu button not found!');
+    }
+
+    // Select the mobile menu trigger h2
+    var menuTrigger = document.getElementById('mobile-menu-trigger');
+    if (menuTrigger) {
+        menuTrigger.addEventListener('click', toggleMenu);
+    } else {
+        console.log('Mobile menu trigger (H2) not found!');
+    }
+});
+
+
+</script>
+
+<!-- Mobile Menu Dropdown, hidden by default and will be toggled by button above -->
+<div class="md:hidden hidden sticky top-0 my-2 z-50" id="mobile-menu">
+    <ul class="flex flex-col p-4 mt-4 bg-gray-50 dark:bg-gray-700 rounded-lg border border-gray-100 dark:border-gray-600">
+        <li><a href="/" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a></li>
+        <!-- Category Dropdown Menu -->
+						<li>
+							<button id="dropdownNavbarLink2"
+								data-dropdown-toggle="dropdownNavbar2"
+								class="flex items-center justify-between w-full block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+								Categories
+								<svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true"
+									xmlns="http://www.w3.org/2000/svg" fill="none"
+									viewBox="0 0 10 6">
+    <path stroke="currentColor" stroke-linecap="round"
+										stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
+  </svg>
+							</button> 
+							
+							<!-- Dropdown Options -->
+							<div id="dropdownNavbar2" class="hidden z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+								<ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
+									aria-labelledby="dropdownLargeButton">
+									<c:forEach var="category" items="${categories}">
+ 										<li><a href="/category/${category.id}"
+										class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"><c:out value="${category.name}"></c:out></a></li>
+        							</c:forEach>
+								</ul>
+							</div>
+							</li>
+        <li><a href="/allItems" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">All Items</a></li>
+        <li><a href="/itemsAvailable" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Items Available</a></li>
+        <li><a href="/itemsNotAvailable" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Items Not Available</a></li>
+        <li><a href="/itemsOnSale" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Items on Sale</a></li>
+    </ul>
+</div>
+
 	<!-- Hero Headline -->
 	<div class="hero  my-5 bg-base-200">
 		<div class="hero-content text-center">
@@ -150,7 +236,7 @@
 	<div class="container my-5 mx-auto px-5 flex justify-around flex-wrap">
 
 		<!-- Xbox Card -->
-		<div class="card w-96 bg-base-100 shadow-xl glass p-1">
+		<div class="card w-96 bg-base-100 mt-2 mb-5 shadow-xl glass p-1">
 			<figure>
 				<img
 					src="/images/Xbox-logo.png"
@@ -165,7 +251,7 @@
 		</div>
 		
 		<!-- PS5 Card --> 
-		<div class="card w-96 bg-base-100 shadow-xl glass p-1">
+		<div class="card w-96 bg-base-100 my-5 shadow-xl glass p-1">
 			<figure>
 				<img
 					src="/images/PS5Logo.png"
@@ -180,7 +266,7 @@
 		</div>
 
 		<!-- Switch Card -->
-		<div class="card w-96 bg-base-100 shadow-xl glass p-1">
+		<div class="card w-96 bg-base-100 my-5 shadow-xl glass p-1">
 			<figure>
 				<img
 					src="images/SwitchLogo.png"
