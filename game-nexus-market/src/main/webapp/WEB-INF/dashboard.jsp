@@ -151,6 +151,7 @@
 	        <span class="sr-only">Open main menu</span>
 	    </button>
 	    
+	    <!-- Page Currently On -->
 	    <h2 id="mobile-menu-trigger" class="cursor-pointer text-xl font-semibold">Dashboard</h2>
 	    
 	    <div class="flex g-2 items-center mr-3">
