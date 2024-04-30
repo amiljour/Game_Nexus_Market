@@ -104,6 +104,11 @@
 						<!-- Items on Sale -->
 						<li><a href="/itemsOnSale" class="block py-2 text-white rounded hover:text-accent">Items on Sale</a></li>
 						
+						<!-- Admin Home Page -->
+						<c:if test="${userId != null}">
+							<li><a href="/admin" class="block py-2 rounded hover:text-accent">Admin Home</a></li>
+						</c:if>
+						
 						<!-- Search-Bar ***In Progress*** -->
 						<li>
 							<button type="button"
@@ -202,6 +207,11 @@
 	        
 	        <!-- Items on Sale -->
 	        <li><a href="/itemsOnSale" class="block py-2 px-3  rounded hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Items on Sale</a></li>
+	        
+	        <!-- Admin Home Page -->
+	        <c:if test="${userId != null}">
+				<li><a href="/admin" class="block py-2 px-3  rounded hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" >Admin Home</a></li>
+			</c:if>
     	</ul>
 	</div>
 
@@ -278,9 +288,23 @@
 				<li><a href="/" class="hover:underline">Contact</a></li>
 				</c:if>
 				<c:if test="${userId != null}">
-					<li><a href="/admin" class="hover:underline me-4 md:me-6">Admin Page</a></li>
-					<li><a href="/test" class="hover:underline me-4 md:me-6">Test Page</a></li>
-					<li><a href="/clearsession" class="hover:underline me-4 md:me-6">Logout Admin</a></li>
+					<!-- Dashboard -->
+					<li><a href="/" class="hover:underline me-4 md:me-6" aria-current="page">Dashboard</a></li>	
+						
+					<!-- Admin Home -->
+					<li><a href="/admin" class="hover:underline me-4 md:me-6" aria-current="page">Admin Home</a></li>	
+						
+					<!-- Add Category -->	
+					<li><a href="/admin/add/category" class="hover:underline me-4 md:me-6">Add Category</a></li>
+						
+					<!-- Add Item -->
+					<li><a href="/admin/add/item" class="hover:underline me-4 md:me-6">Add Item</a></li>
+						
+					<!-- Items Out of Stock -->
+					<li><a href="/admin/items/outOfStock" class="hover:underline me-4 md:me-6">Items Out of Stock</a></li>
+						
+					<!-- Items on Sale -->
+					<li><a href="/clearsession" class="hover:underline me-4 md:me-6">Logout</a></li>
 				</c:if> 
 			</ul>
 		</div>
