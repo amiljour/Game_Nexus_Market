@@ -56,16 +56,16 @@
 		<nav class="hidden md:flex bg-gray-50 dark:bg-gray-700">
 		    <div class="w-full px-4 py-3 mx-auto">
 		        <div class="flex items-center justify-around">
-		            <ul class="flex flex-row flex-wrap justify-around font-medium mt-0 space-x-8 rtl:space-x-reverse text-md items-center w-full mx-24">
+		            <ul class="flex flex-row flex-wrap justify-around font-medium mt-0 space-x-8 rtl:space-x-reverse text-white text-md items-center w-full mx-24">
 						
 						<!-- Dashboard -->
 						<li>
-							<a href="/" class="block py-2 text-info rounded hover:text-accent" aria-current="page">Dashboard</a>
+							<a href="/" class="block py-2  rounded hover:text-accent" aria-current="page">Dashboard</a>
 						</li>
 						
 						<!-- Categories Drop Down Menu -->
 						<li>
-							<button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center justify-between w-full py-2 text-white hover:text-accent">
+							<button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center justify-between w-full py-2 text-info hover:text-accent">
 								Categories
 								<svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true"
 									xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -78,10 +78,10 @@
 							<!-- Drop Down Options -->
 							<div id="dropdownNavbar"
 								class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
-								<ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownLargeButton">
+								<ul class="py-2 text-sm text-info dark:text-gray-200" aria-labelledby="dropdownLargeButton">
 									<c:forEach var="category" items="${categories}">
  										<li>
- 											<a href="/category/${category.id}" class="block px-4 py-2 hover:bg-gray-600 hover:text-accent">
+ 											<a href="/category/${category.id}" class="block px-4 py-2 hover:bg-gray-600 hover:text-accent ">
  												<c:out value="${category.name}"></c:out>
  											</a>
  										</li>
@@ -161,7 +161,7 @@
 
 
 	<!-- Mobile Menu Drop-Down -->
-	<div class="md:hidden hidden sticky top-0 z-50" id="mobile-menu">
+	<div class="md:hidden hidden sticky top-10 z-50" id="mobile-menu">
 	    <ul class="flex flex-col text-center text-xl text-white p-4 mt-4 bg-gray-50 dark:bg-gray-700 rounded-lg border border-gray-100 dark:border-gray-600">
 	    
 	    	<!-- Dashboard -->
@@ -206,7 +206,9 @@
 	<!-- Body -->
 	<div>
 	
-		<h1 class="text-center mb-5 text-4xl font-semibold dark:text-white my-3"><c:out value="${category.name }"></c:out> Category Page</h1>
+		<h1 class="hidden md:hidden lg:block text-center mb-5 text-4xl font-semibold dark:text-white my-3">
+		    <c:out value="${category.name}"/> Category Page
+		</h1>
 		
 		<div class="container my-5 mx-auto px-5 flex justify-around flex-wrap">
 		
@@ -216,35 +218,40 @@
 			
 				<div class="card w-96 my-3 glass shadow-xl">
 					<figure>
-						<img src="${item.imageLink}" alt="${item.name}"
-						class="h-full max-h-48 m-2" />
+						<a href="/item/${item.id}" class="card-title"><img src="${item.imageLink}" alt="${item.name}"
+						class="h-full max-h-48 m-2" /></a>
 					</figure>
-				<div class="card-body items-center text-center">
-					<a href="/item/${item.id}" class="card-title"><c:out value="${item.name}"></c:out></a>
-					<c:choose>
-					    <c:when test="${item.discount > 0}">
-					    	<p class="text-error line-through">Original Price: $<c:out value="${item.price}"/></p>
-					      	<p class="text-success">Discounted Price: $<c:out value="${item.getDiscountedPrice()}"/></p>
-					    </c:when>
-					    <c:otherwise>
-					    	<p>Price: $<c:out value="${item.price}"/></p>
-						</c:otherwise>
-					</c:choose>
-					<p>Console: <c:out value="${item.category.name}"></c:out></p>
-					<c:choose>
-						<c:when test="${item.inventory == 0}">
-							<p class="text-error">Items in Stock: <c:out value="${item.inventory}"></c:out></p>
-						</c:when>
-						<c:otherwise>
-							<p class="text-secondary">Items in Stock: <c:out value="${item.inventory}"></c:out></p>
-						</c:otherwise>
-					</c:choose>
-					<p>Description: <c:out value="${item.description}"></c:out></p>
-					<div class="mt-3 card-actions justify-center">
-						<a href="" class="btn btn-success">Add to Cart</a> 
+					<div class="card-body items-center text-center">
+						<a href="/item/${item.id}" class="card-title"><c:out value="${item.name}"></c:out></a>
+						<c:choose>
+						    <c:when test="${item.discount > 0}">
+						    	<p class="text-error line-through">Original Price: $<c:out value="${item.price}"/></p>
+						      	<p class="text-success">Discounted Price: $<c:out value="${item.getDiscountedPrice()}"/></p>
+						    </c:when>
+						    <c:otherwise>
+						    	<p>Price: $<c:out value="${item.price}"/></p>
+							</c:otherwise>
+						</c:choose>
+						<p>Console: <c:out value="${item.category.name}"></c:out></p>
+						<c:choose>
+							<c:when test="${item.inventory == 0}">
+								<p class="text-error">Items in Stock: <c:out value="${item.inventory}"></c:out></p>
+							</c:when>
+							<c:otherwise>
+								<p class="text-secondary">Items in Stock: <c:out value="${item.inventory}"></c:out></p>
+							</c:otherwise>
+						</c:choose>
+						<p>Description: <c:out value="${item.description}"></c:out></p>
+						<div class="mt-3 card-actions justify-center">
+							<c:if test="${item.inventory != 0}">
+								<a href="/item/add/${item.id}" class="btn btn-success">Add to Cart</a>     						
+							</c:if>
+							<c:if test="${item.inventory == 0}">
+							    <a href="" class="btn btn-success btn-disabled">Stock Coming Soon!</a> 
+							</c:if>
+						</div>
 					</div>
 				</div>
-			</div>
 				
     		</c:if>
 			

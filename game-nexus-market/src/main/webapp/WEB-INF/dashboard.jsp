@@ -162,7 +162,7 @@
 
 
 	<!-- Mobile Menu Drop-Down -->
-	<div class="md:hidden hidden sticky top-0 z-50" id="mobile-menu">
+	<div class="md:hidden hidden sticky top-10 z-50" id="mobile-menu">
 	    <ul class="flex flex-col text-center text-xl text-white p-4 mt-4 bg-gray-50 dark:bg-gray-700 rounded-lg border border-gray-100 dark:border-gray-600">
 	    
 	    	<!-- Dashboard -->
