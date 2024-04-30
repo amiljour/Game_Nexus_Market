@@ -39,7 +39,11 @@ public class AdminController {
 
 	// Testing Page
 	@GetMapping("/test")
-	public String test(Model model) {
+	public String test(Model model, HttpSession session) {
+		// Route Protection
+		if (!isAdmin(session)) {
+			return "redirect:/clearsession";
+		}
 		model.addAttribute("categories", categoryService.allCategories());
 		model.addAttribute("items", itemService.allItemes());
 		return "test.jsp";
@@ -204,5 +208,19 @@ public class AdminController {
 		itemService.deleteItemById(id);
 		return "redirect:/admin";
 	}
+	
+	// All Items not in Stock Page
+	// Testing Page
+	@GetMapping("/admin/items/outOfStock")
+	public String adminOutOfStock(Model model, HttpSession session) {
+		// Route Protection
+		if (!isAdmin(session)) {
+			return "redirect:/clearsession";
+		}
+		model.addAttribute("categories", categoryService.allCategories());
+		model.addAttribute("items", itemService.allItemes());
+		return "adminItemsOutOfStock.jsp";
+	}
+
 
 }

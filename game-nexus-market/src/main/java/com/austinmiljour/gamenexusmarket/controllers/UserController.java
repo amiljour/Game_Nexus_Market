@@ -78,7 +78,7 @@ public class UserController {
 			session.setAttribute("firstName", loggedUser.getFirstName());
 			// save the userName to session for future use
 			session.setAttribute("admin", loggedUser.isAdmin());
-			return"redirect:/";
+			return"redirect:/admin";
 		}
 	}
 	

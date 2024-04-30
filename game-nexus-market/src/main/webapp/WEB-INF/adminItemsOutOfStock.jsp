@@ -13,7 +13,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Admin Page</title>
+<title>Items Out</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link
 	href="https://cdn.jsdelivr.net/npm/daisyui@4.9.0/dist/full.min.css"
@@ -42,7 +42,7 @@
 		    
 		    <!-- Mobile Menu View -->
 		    <div class="flex lg:hidden justify-center items-center mx-auto max-w-screen-xl p-4">
-		        <a href="/admin" class="flex items-center space-x-3 rtl:space-x-reverse">
+		        <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
 		            <img src="/images/GameController.png" class="h-8" alt="Game Controller Logo" />
 		            <span class="text-center text-4xl sm:text-5xl font-semibold dark:text-white">Game Nexus Market</span>
 		        </a>
@@ -56,10 +56,10 @@
 		            <ul class="flex flex-row flex-wrap justify-around font-medium mt-0 space-x-8 rtl:space-x-reverse text-md items-center w-full mx-24">
 						
 						<!-- Dashboard -->
-						<li><a href="/" class="block py-2 text-white rounded hover:text-accent" aria-current="page">Dashboard</a></li>	
+						<li><a href="/" class="block py-2 text-white rounded hover:text-accent">Dashboard</a></li>	
 						
 						<!-- Admin Home -->
-						<li><a href="/admin" class="block py-2 text-info rounded hover:text-accent" aria-current="page">Admin Home</a></li>	
+						<li><a href="/admin" class="block py-2  rounded hover:text-accent">Admin Home</a></li>	
 						
 						<!-- Add Category -->	
 						<li><a href="/admin/add/category" class="block py-2 text-white rounded hover:text-accent">Add Category</a></li>
@@ -68,7 +68,7 @@
 						<li><a href="/admin/add/item" class="block py-2 text-white rounded hover:text-accent">Add Item</a></li>
 						
 						<!-- Items Out of Stock -->
-						<li><a href="/admin/items/outOfStock" class="block py-2 text-white rounded hover:text-accent">Items Out of Stock</a></li>
+						<li><a href="/admin/items/outOfStock" class="block py-2 text-info rounded hover:text-accent">Items Out of Stock</a></li>
 						
 						<!-- Items on Sale -->
 						<li><a href="/clearsession" class="block py-2 text-white rounded hover:text-accent">Logout</a></li>
@@ -90,7 +90,7 @@
 	    </button>
 	    
 	    <!-- Page Currently On -->
-	    <h2 id="mobile-menu-trigger" class="cursor-pointer text-xl font-semibold">Admin Home</h2>
+	    <h2 id="mobile-menu-trigger" class="cursor-pointer text-xl font-semibold">Items Out of Stock</h2>
 	</div>
 
 
@@ -117,83 +117,56 @@
 			<li><a href="/clearsession" class="block py-2 px-3 rounded hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Logout</a></li>
     	</ul>
 	</div>
-	
+
 	<!-- Body -->
-
-	<h1 class="text-center text-5xl font-bold dark:text-white my-5">Categories</h1>
-
-	<div class="container my-5 mx-auto px-5 flex justify-around flex-wrap">
-
-		<c:forEach var="category" items="${categories}">
-
-			<div class="card w-96 h-40 my-3 bg-primary text-primary-content">
-				<div class="card-body">
-					<h2 class="text-center text-2xl font-semibold">
-						<c:out value="${category.name}"></c:out>
-					</h2>
-					<div class="card-actions justify-center">
-						<a href="/admin/edit/category/${category.id}"
-							class="btn btn-outline btn-warning">Edit</a>
-						<form action="/admin/delete/category/${category.id}" method="post">
-							<input type="hidden" name="_method" value="DELETE">
-							<button type="submit" class="btn btn-outline btn-success">Delete</button>
-						</form>
-					</div>
-				</div>
-			</div>
-
-		</c:forEach>
-
-	</div>
-
-
-
-	<!-- Items -->
-	<h1 class="text-center text-5xl font-semibold dark:text-white my-5">Items</h1>
+	<h1 class="hidden md:hidden lg:blocktext-center text-5xl font-semibold dark:text-white my-5">Items out of Stock</h1>
 
 	<div class="container my-5 mx-auto px-5 flex justify-around flex-wrap">
 
 		<c:forEach var="item" items="${items}">
+		
+			<c:if test="${item.inventory == 0}"> 
 
-			<div class="card w-96 my-3 bg-neutral neutral-content shadow-xl">
-				<figure>
-					<a href="/admin/edit/item/${item.id}"><img src="${item.imageLink}" alt="${item.name}" class="h-full max-h-48 m-2" /></a>
-				</figure>
-				<div class="card-body items-center text-center">
-					<a href="/admin/edit/item/${item.id}" class="card-title"><c:out value="${item.name}"></c:out></a>
-					<c:choose>
-					    <c:when test="${item.discount > 0}">
-					    	<p class="secondary-content">Original Price: $<c:out value="${item.price}"/></p>
-					      	<p class="secondary-content">Discounted Price: $<c:out value="${item.getDiscountedPrice()}"/></p>
-					    </c:when>
-					    <c:otherwise>
-					    	<p>Price: $<c:out value="${item.price}"/></p>
-						</c:otherwise>
-					</c:choose>
-					<p>Console: <c:out value="${item.category.name}"></c:out></p>
-					<c:choose>
-						<c:when test="${item.inventory == 0}">
-							<p class="text-error">Items in Stock: <c:out value="${item.inventory}"></c:out></p>
-						</c:when>
-						<c:otherwise>
-							<p class="text-success">Items in Stock: <c:out value="${item.inventory}"></c:out></p>
-						</c:otherwise>
-					</c:choose>
-					<div class="mt-3 card-actions justify-center">
-						<a href="/admin/edit/item/${item.id}" class="btn btn-outline btn-warning">Edit</a> 
-						<form action="/admin/delete/item/${category.id}" method="post">
-							<input type="hidden" name="_method" value="DELETE">
-							<button type="submit" class="btn btn-outline btn-primary">Delete</button>
-						</form>
+				<div class="card w-96 my-3 bg-neutral neutral-content shadow-xl">
+					<figure>
+						<a href="/admin/edit/item/${item.id}"><img src="${item.imageLink}" alt="${item.name}" class="h-full max-h-48 m-2" /></a>
+					</figure>
+					<div class="card-body items-center text-center">
+						<a href="/admin/edit/item/${item.id}" class="card-title"><c:out value="${item.name}"></c:out></a>
+						<c:choose>
+						    <c:when test="${item.discount > 0}">
+						    	<p class="secondary-content">Original Price: $<c:out value="${item.price}"/></p>
+						      	<p class="secondary-content">Discounted Price: $<c:out value="${item.getDiscountedPrice()}"/></p>
+						    </c:when>
+						    <c:otherwise>
+						    	<p>Price: $<c:out value="${item.price}"/></p>
+							</c:otherwise>
+						</c:choose>
+						<p>Console: <c:out value="${item.category.name}"></c:out></p>
+						<c:choose>
+							<c:when test="${item.inventory == 0}">
+								<p class="text-error">Items in Stock: <c:out value="${item.inventory}"></c:out></p>
+							</c:when>
+							<c:otherwise>
+								<p class="text-success">Items in Stock: <c:out value="${item.inventory}"></c:out></p>
+							</c:otherwise>
+						</c:choose>
+						<div class="mt-3 card-actions justify-center">
+							<a href="/admin/edit/item/${item.id}" class="btn btn-outline btn-warning">Edit</a> 
+							<form action="/admin/delete/item/${category.id}" method="post">
+								<input type="hidden" name="_method" value="DELETE">
+								<button type="submit" class="btn btn-outline btn-primary">Delete</button>
+							</form>
+						</div>
+	
 					</div>
-
 				</div>
-			</div>
+
+			</c:if>
 			
 		</c:forEach>
 
 	</div>
-
 
 	<!-- Footer -->
 	<footer class="rounded-lg shadow m-4 dark:bg-gray-800">
@@ -233,7 +206,5 @@
 			</ul>
 		</div>
 	</footer>
-
-
 </body>
 </html>
