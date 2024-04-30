@@ -29,7 +29,8 @@ public class CartItem {
 		this.quantity = quantity;
 	}
 
-	public Double getTotalPrice() {
-		return item.getDiscountedPrice() * quantity;
+	public double getTotalPrice() {
+	    double price = item.getDiscountedPrice() * quantity;
+	    return Math.round(price * 100.0) / 100.0;
 	}
 }

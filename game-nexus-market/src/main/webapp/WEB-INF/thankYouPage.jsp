@@ -24,27 +24,44 @@
 	rel="stylesheet" />
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+		<script type="text/javascript" src="/js/script.js"></script>
 </head>
 <body>
 	<!-- Header -->
 	<div>
 		<nav class="border-gray-200 dark:bg-gray-900">
-			<div
-				class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
-				<a href="/clearsession" class="flex items-center space-x-3 rtl:space-x-reverse">
-					<img src="/images/GameController.png" class="h-8"
-					alt="Game Controller Logo" /> <span
-					class="text-center sm:text-5xl text-xl font-semibold dark:text-white">Game Nexus Market</span>
-				</a>
-
-			</div>
+		
+		    <!-- Desktop Menu View -->
+		    <div class="lg:flex hidden justify-between items-center mx-auto max-w-screen-xl p-4">
+		        <a href="/clearsession" class="flex items-center space-x-3 rtl:space-x-reverse">
+		            <img src="/images/GameController.png" class="h-8" alt="Game Controller Logo" />
+		            <span class="text-center text-5xl font-semibold dark:text-white">Game Nexus Market</span>
+		        </a>
+		    </div>
+		    
+		    <!-- Mobile Menu View -->
+		    <div class="flex lg:hidden justify-center items-center mx-auto max-w-screen-xl p-4">
+		        <a href="/clearsession" class="flex items-center space-x-3 rtl:space-x-reverse">
+		            <img src="/images/GameController.png" class="h-8" alt="Game Controller Logo" />
+		            <span class="text-center text-4xl sm:text-5xl font-semibold dark:text-white">Game Nexus Market</span>
+		        </a>
+		    </div>
 		</nav>
+		
+	</div>
+
+	<!-- Mobile Navigation Bar -->
+	<div class="md:hidden flex justify-center text-center items-center sticky top-0 z-50 bg-base-100">
+	    
+	    <!-- Page Currently On -->
+	    <h2 id="mobile-menu-trigger" class="cursor-pointer text-xl font-semibold my-3">Thank you for your purchase!</h2>
+	    
 	</div>
 
 	<!-- Body -->
 	<div>
 	
-		<h1 class="text-center mt-5 sm:text-4xl text-2xl font-semibold dark:text-white mt-3">Thank your for your purchase at Game Nexus Market!</h1>
+		<h1 class="hidden md:hidden lg:block text-center mt-5 sm:text-4xl text-2xl font-semibold dark:text-white mt-3">Thank you for your purchase at Game Nexus Market!</h1>
 		<p class="text-center mt-5 sm:text-2xl text-xl font-semibold dark:text-white mt-3" >Your order will be on the way shortly! Here are the items that you purchased today!</p>
 		
 		<c:if test="${not empty cartItems}">
@@ -58,20 +75,20 @@
 					        <c:forEach items="${cartItems}" var="cartItem">
 					            <c:if test="${cartItem != null && cartItem.item != null}">
 					                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-					                    <th scope="row" class="hidden sm:table-cell px-6 py-4 font-medium text-gray-900 whitespace-normal dark:text-white text-center break-words">
-					                    	<img alt="${cartItem.item.name}" src="${cartItem.item.imageLink}" class="mx-auto max-h-40">
-					                    </th>
-					                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-normal dark:text-white break-words">
-					                        <c:out value="${cartItem.item.name}"/>
-					                    </th>
-					                    <td class="hidden sm:table-cell px-6 py-3 break-words">
-					                        <c:out value="${cartItem.item.category.name}"/>
-					                    </td>
-					                    <td class="hidden sm:table-cell px-6 py-3 break-words">
-					                        <c:out value="${cartItem.quantity}"/>
+										<td scope="row" class="hidden sm:table-cell px-6 py-3 font-medium text-gray-900 whitespace-normal dark:text-white text-center break-words">
+							            	<img alt="${cartItem.item.name}" src="${cartItem.item.imageLink}" class="mx-auto max-h-40">
+							            </td>
+							            <td scope="row" class="px-6 py-3 font-medium text-gray-900 whitespace-normal dark:text-white break-words">
+							            	<c:out value="${cartItem.item.name}"/>
+							            </td>
+							            <td class="hidden sm:table-cell px-6 py-3 break-words">
+							            	<c:out value="${cartItem.item.category.name}"/>
+							            </td>
+					                    <td class="px-6 py-3 break-words">
+					                    	<c:out value="${cartItem.quantity}"/>
 					                    </td>
 					                    <td class="px-4 py-2 break-words">
-					                        $<c:out value="${cartItem.getTotalPrice()}"/>
+					                    	$<c:out value="${cartItem.getTotalPrice()}"/>
 					                    </td>
 					                </tr>
 					            </c:if>
@@ -101,10 +118,9 @@
 				class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
 				<c:if test="${userId == null}">
 					<li><a href="/loginandregister" class="hover:underline me-4 md:me-6">Admin Login / Registration</a></li>
-					<li><a href="/" class="hover:underline me-4 md:me-6">Privacy Policy</a></li>
-					<li><a href="/" class="hover:underline me-4 md:me-6">Terms & Conditions</a></li>
-					<li><a href="/" class="hover:underline me-4 md:me-6">Cookie Policy</a></li>
-					<li><a href="/" class="hover:underline me-4 md:me-6">Contact</a></li>
+					<li><a href="/clearsession" class="hover:underline me-4 md:me-6">Privacy Policy</a></li>
+				<li><a href="/clearsession" class="hover:underline me-4 md:me-6">Licensing</a></li>
+				<li><a href="/clearsession" class="hover:underline">Contact</a></li>
 				</c:if>
 				<c:if test="${userId != null}">
 					<li><a href="/admin" class="hover:underline me-4 md:me-6">Admin Page</a></li>

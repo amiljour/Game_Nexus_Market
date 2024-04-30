@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.austinmiljour.gamenexusmarket.models.LoginUser;
 import com.austinmiljour.gamenexusmarket.models.User;
+import com.austinmiljour.gamenexusmarket.services.CartService;
+import com.austinmiljour.gamenexusmarket.services.CategoryService;
 import com.austinmiljour.gamenexusmarket.services.UserService;
 
 import jakarta.servlet.http.HttpSession;
@@ -19,14 +21,20 @@ public class UserController {
 	
 	// Add the UserService
 	private final UserService userService;
+	private final CategoryService categoryService;
+	private final CartService cartService;
 	
-	public UserController(UserService userService) {
+	public UserController(UserService userService, CategoryService categoryService, CartService cartService) {
 		this.userService = userService;
+		this.categoryService = categoryService;
+		this.cartService = cartService;
 	}
 
 	// Display login and register forms
 	@GetMapping("/loginandregister")
 	public String loginRegistrationForm(Model model) {
+		model.addAttribute("categories", categoryService.allCategories());
+		model.addAttribute("cartSize", cartService.getItemCount());
 		model.addAttribute("newUser", new User());
 		model.addAttribute("newLogin", new LoginUser());
 		return "loginRegistration.jsp";

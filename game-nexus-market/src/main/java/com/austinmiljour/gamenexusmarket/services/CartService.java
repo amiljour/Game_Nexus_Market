@@ -23,14 +23,22 @@ public class CartService {
 	private Map<Long, CartItem> items = new HashMap<>();
 	
 	//Add Item to Cart
-	public void addItem(Item item) {
-		CartItem cartItem = items.get(item.getId());
-		if (cartItem == null) {
-			cartItem = new CartItem(item, 1);
-			items.put(item.getId(), cartItem);
-		} else {
-			cartItem.setQuantity(cartItem.getQuantity() + 1);
-		}
+	public boolean addItem(Item item) {
+	    CartItem cartItem = items.get(item.getId());
+
+	    if (cartItem == null) {
+	        if (item.getInventory() > 0) {
+	            cartItem = new CartItem(item, 1);  // Start with one item
+	            items.put(item.getId(), cartItem);
+	            return true;
+	        }
+	    } else {
+	        if (cartItem.getQuantity() < item.getInventory()) {
+	            cartItem.setQuantity(cartItem.getQuantity() + 1);
+	            return true;
+	        }
+	    }
+	    return false;
 	}
 	
 	//Remove Item from Cart
@@ -52,11 +60,11 @@ public class CartService {
 	
 	// Cart Total Price
 	public double getTotal() {
-		double total = 0.0;
+	    double total = 0.0;
 	    for (CartItem cartItem : items.values()) {
 	        total += cartItem.getTotalPrice();
 	    }
-	    return total;
+	    return Math.round(total * 100.0) / 100.0;
 	}
 	
 	@Transactional

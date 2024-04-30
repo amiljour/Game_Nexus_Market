@@ -36,15 +36,25 @@ public class ItemController {
 	
 	// Add Item to Cart Process
 	@GetMapping("/item/add/{id}")
-	public String addItemToCart(@PathVariable("id") Long id, Model model, RedirectAttributes redirectAttributes ) {
-		Item item = itemService .oneItem(id);
-		if (item != null && item.getInventory() > 0) {
-			cartService.addItem(item);
-			redirectAttributes.addFlashAttribute("successMessage", "Item add to cart successfully!");
-		} else {
-			redirectAttributes.addFlashAttribute("errorMessage", "Item is not currently available.");
-		}
-		return "redirect:/shoppingCart";
+	public String addItemToCart(@PathVariable("id") Long id, Model model, RedirectAttributes redirectAttributes) {
+	    Item item = itemService.oneItem(id);
+
+	    // Check if the item exists and has a positive inventory count.
+	    if (item != null) {
+	        // Attempt to add the item to the cart.
+	        boolean addedSuccessfully = cartService.addItem(item);
+	        
+	        if (addedSuccessfully) {
+	            redirectAttributes.addFlashAttribute("successMessage", "Item added to cart successfully!");
+	        } else {
+	            // This message is shown if the item exists but not enough inventory is available.
+	            redirectAttributes.addFlashAttribute("errorMessage", "Not enough items in stock to add more to your cart.");
+	        }
+	    } else {
+	        // This message is shown if the item does not exist.
+	        redirectAttributes.addFlashAttribute("errorMessage", "Item is not currently available.");
+	    }
+	    return "redirect:/shoppingCart";
 	}
 	
 	// Remove Item From Cart

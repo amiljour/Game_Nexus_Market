@@ -197,7 +197,7 @@
 	        <li><a href="/itemsAvailable" class="block py-2 px-3  rounded hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Items Available</a></li>
 	        
 	        <!-- Items Not Available -->
-	        <li><a href="/itemsNotAvailable" class="block py-2 px-3  rounded hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Items Not Available</a></li>
+	        <li><a href="/itemsNotAvaiable" class="block py-2 px-3  rounded hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Items Not Available</a></li>
 	        
 	        <!-- Items on Sale -->
 	        <li><a href="/itemsOnSale" class="block py-2 px-3  rounded hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Items on Sale</a></li>
