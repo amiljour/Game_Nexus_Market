@@ -8,10 +8,20 @@ The user interface is enhanced by Tailwind CSS, offering a modern and responsive
 A unique feature of the site is its admin view, which is designed for simplicity, allowing effortless site maintenance. Secure login credentials enable the owner to easily add, edit, or remove items and categories, ensuring the content remains fresh and engaging.
 
 ## Screenshots
-- Dashboard Page
-- Admin Home Page
-- All Items Page
-- Cart Page
+<h3>Dashboard</h3>
+<div>
+  <img src="/Screenshots/Dashboard.png" alt="Desktop Dashboard" style="height: 250px; margin-right: 25px;"> <img src="/Screenshots/MobileDashboard.png" alt="Mobile Dashboard" style="height: 250px;">
+</div>
+
+<h3>All Items Page</h3>
+<div>
+  <img src="/Screenshots/AllItems.png" alt="All Items Pag" style="height: 250px;">
+</div>
+
+<h3>Admin Pages</h3>
+<div>
+  <img src="/Screenshots/AdminHome.png" alt="Desktop Admin Home Page" style="height: 250px;">
+</div>
 
 ## Installation Instructions
 **Required Programs:**
